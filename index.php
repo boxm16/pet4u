@@ -1,5 +1,8 @@
 <?php
+require_once 'TechManController.php';
 
-echo "PET4U ON HEROKU";
+$techMenController=new TechManController();
+$result=$techMenController->createDatabaseTables();
+echo $result;
 
 ?>
