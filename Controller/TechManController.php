@@ -12,4 +12,15 @@ class TechManController {
         $techManDao->createItemBoxTable();
     }
 
+    public function deleteDatabaseTables() {
+
+        $techManDao = new TechManDao();
+        //precedence matter
+
+        $techManDao->deleteItemCodeTable();
+        $techManDao->deleteItemBarcodeTable();
+        $techManDao->deleteItemBoxTable();
+        $techManDao->deleteItemTable();
+    }
+
 }

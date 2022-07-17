@@ -79,7 +79,7 @@ class TechManDao {
         $sql = "CREATE TABLE `item_box`  ( 
             `item_id` INT(6) NOT NULL , 
             `box_barcode` VARCHAR(100) NOT NULL , 
-            `quantity` INT(25) NOT NULL , 
+            `item_quantity` INT(25) NOT NULL , 
             FOREIGN KEY (item_id) REFERENCES item(id) ON DELETE CASCADE)
             ENGINE = InnoDB;
        ";
@@ -93,6 +93,50 @@ class TechManDao {
                 echo $e->getMessage() . " Error Code:";
                 echo $e->getCode() . "<br>";
             }
+        }
+    }
+
+    //------------------ DELETION--------------------
+     public function deleteItemTable() {
+        $sql = "DROP TABLE `item`";
+        try {
+            $this->connection->exec($sql);
+            echo "Table 'item' deleted successfully" . "<br>";
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+        }
+    }
+
+    public function deleteItemCodeTable() {
+        $sql = "DROP TABLE `item_code`";
+        try {
+            $this->connection->exec($sql);
+            echo "Table 'item_code' deleted successfully" . "<br>";
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+        }
+    }
+     public function deleteItemBarcodeTable() {
+        $sql = "DROP TABLE `item_barcode`";
+        try {
+            $this->connection->exec($sql);
+            echo "Table 'item_barcode' deleted successfully" . "<br>";
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+        }
+    }
+    
+    public function deleteItemBoxTable() {
+        $sql = "DROP TABLE `item_box`";
+        try {
+            $this->connection->exec($sql);
+            echo "Table 'item_box' deleted successfully" . "<br>";
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
         }
     }
 

@@ -6,8 +6,9 @@ class Item {
     private $description;
     private $codes;
     private $barcodes;
-    private $boxBarcodes;
+    private $boxes;
     private $position;
+    private $site;
 
     function __construct() {
         $this->codes = array();
@@ -31,12 +32,16 @@ class Item {
         return $this->barcodes;
     }
 
-    function getBoxBarcodes() {
-        return $this->boxBarcodes;
+    function getBoxes() {
+        return $this->boxes;
     }
 
     function getPosition() {
         return $this->position;
+    }
+
+    function getSite() {
+        return $this->site;
     }
 
     function setId($id): void {
@@ -55,12 +60,16 @@ class Item {
         $this->barcodes = $barcodes;
     }
 
-    function setBoxBarcodes($boxBarcodes): void {
-        $this->boxBarcodes = $boxBarcodes;
+    function setBoxes($boxes): void {
+        $this->boxes = $boxes;
     }
 
     function setPosition($position): void {
         $this->position = $position;
+    }
+
+    function setSite($site): void {
+        $this->site = $site;
     }
 
     public function addCode($code) {
@@ -71,8 +80,8 @@ class Item {
         array_push($this->barcodes, $barcode);
     }
 
-    public function addBoxBarcode($boxBarcode) {
-        array_push($this->boxBarcodes, $boxBarcode);
+    public function addBox($box) {
+        array_push($this->boxes, $box);
     }
 
 }

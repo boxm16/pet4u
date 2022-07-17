@@ -29,6 +29,10 @@
                             <td><input type="text" size="50" name='code'></td>
                         </tr>
                         <tr>
+                            <td>ΘΕΣΗ</td>
+                            <td><input type="text" size="50" name='position'></td>
+                        </tr>
+                        <tr>
                             <td>BARCODE ΤΕΜΑΧΙΟΥ</td>
                             <td><input type="text" size="120" name='barcode'></td>
                         </tr>
@@ -40,9 +44,12 @@
                             <td> ΤΕΜΑΧΙΑ ΣΤΟ ΚΟΥΤΙ</td>
                             <td><input type="number" name='itemsInBox'></td>
                         </tr>
+                         <tr>
+                            <td>SITE</td>
+                            <td><input type="text" size="120" name='site'></td>
+                        </tr>
                         <tr>
                             <td colspan="2"> <button class="btn btn-primary" type="submit">ΚΑΤΑΧΩΡΗΣΗ</button></td>
-
                         </tr>
 
                     </table>
