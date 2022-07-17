@@ -5,9 +5,11 @@ require_once 'DataBaseConnection.php';
 class TechManDao {
 
     private $databaseConnection;
+    private $connection;
 
-    function __construct($databaseConnection) {
-        $this->databaseConnection = $databaseConnection;
+    function __construct() {
+        $this->databaseConnection = new DataBaseConnection();
+       $this->connection= $this->databaseConnection->getConnection();
     }
 
     public function createTable() {
