@@ -15,6 +15,7 @@
         <div class="row">
             <div class="col-md-auto">
                 <center> ΚΑΙΝΟΥΡΙΟ ΠΡΟΪΟΝ</center>
+                <a href="index.php">Main Page</a>
                 <hr>
                 <form action="requestDispatcher.php" method="POST">
                     <input hidden name='addNewItem'>

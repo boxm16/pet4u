@@ -26,4 +26,8 @@ class ItemController {
         $this->itemDao->addItemBox($box);
     }
 
+    public function getAllItems() {
+        return $this->itemDao->getAllItems();
+    }
+
 }

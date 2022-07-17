@@ -72,4 +72,39 @@ class ItemDao {
         $statement->execute();
     }
 
+    public function getAllItems() {
+
+        $items = array();
+        $sql = "SELECT * FROM item "
+                . "INNER JOIN item_barcode ON item.id=item_barcode.item_id "
+                . "INNER JOIN item_code ON item.id=item_code.item_id "
+                . "INNER JOIN item_box ON item.id=item_box.item_id";
+
+        try {
+            $result = $this->connection->query($sql)->fetchAll();
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+            exit;
+        }
+
+        foreach ($result as $itemData) {
+
+
+            $itemId = $itemData["id"];
+            $description = $itemData["description"];
+            if (!array_key_exists($itemId, $items)) {
+                $item = new Item();
+                $item->setId($itemId);
+                $item->setDescription($description);
+                
+                $items[$itemId]=$item;
+            }
+        }
+
+
+
+        return $items;
+    }
+
 }
