@@ -89,20 +89,28 @@ class ItemDao {
         }
 
         foreach ($result as $itemData) {
-
+           
 
             $itemId = $itemData["id"];
             $description = $itemData["description"];
+            $position = $itemData["position"];
+            
+            $itemBarcode = $itemData["item_barcode"];
+            $itemCode = $itemData["item_code"];
+            $boxBarcode = $itemData["box_barcode"];
+            $itemsInBox = $itemData["item_quantity"];
+
             if (!array_key_exists($itemId, $items)) {
                 $item = new Item();
                 $item->setId($itemId);
                 $item->setDescription($description);
+                $item->setPosition($position);
+                $item->addCode($itemCode);
+                $item->addBarcode($itemBarcode);
                 
-                $items[$itemId]=$item;
+                $items[$itemId] = $item;
             }
         }
-
-
 
         return $items;
     }

@@ -1,8 +1,7 @@
-<?php 
+<?php
 require_once 'Controller/ItemController.php';
-$itemController=new ItemController();
-$items=$itemController->getAllItems();
-
+$itemController = new ItemController();
+$items = $itemController->getAllItems();
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,12 +12,15 @@ $items=$itemController->getAllItems();
     <body>
         ITEMS
         <hr>
+        <a href="index.php">Main Page</a>
+        <hr>
+        <a href="addNewItem.php">Add New Item</a>
+        <hr>
         <?php
-      
-       foreach($items as $item){
-           echo $item->getId();
-           echo "<br>";
-       }
+        foreach ($items as $item) {
+            echo $item->getId(). "-" . $item->getCodes()[0] . "-" . $item->getDescription()."-" . $item->getBarcodes()[0];
+            echo "<br>";
+        }
         ?>
     </body>
 </html>

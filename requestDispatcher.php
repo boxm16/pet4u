@@ -32,8 +32,8 @@ if (isset($_POST["addNewItem"])) {
     $box->setBoxBarcode($_POST["boxBarcode"]);
     $box->setItemsQuantity($_POST["itemsInBox"]);
     $itemController->addItemBox($box);
-
-    echo "idem added";
+    header("Location: items.php");
+    exit;
 }
 
 
