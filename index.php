@@ -2,7 +2,5 @@
 
 require_once 'Controller/TechManController.php';
 
-$techMenController = new TechManController();
-$result = $techMenController->createDatabaseTables();
-echo $result;
+echo "<a href='addNewItem.php'>Add New Item</a>"
 ?>
