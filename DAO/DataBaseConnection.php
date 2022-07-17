@@ -7,9 +7,9 @@ class DataBaseConnection {
     private $pass;
 
     function __construct() {
-        $this->db = '6sxSaLPk6d';
-        $this->user = '6sxSaLPk6d';
-        $this->pass = 'eyL1ogMwP0';
+        $this->db = 'h0u4Z7iqi8';
+        $this->user = 'h0u4Z7iqi8';
+        $this->pass = 'Z5dTwqvCQd';
     }
 
     public function getConnection() {
