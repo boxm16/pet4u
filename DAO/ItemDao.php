@@ -89,12 +89,12 @@ class ItemDao {
         }
 
         foreach ($result as $itemData) {
-           
+
 
             $itemId = $itemData["id"];
             $description = $itemData["description"];
             $position = $itemData["position"];
-            
+
             $itemBarcode = $itemData["item_barcode"];
             $itemCode = $itemData["item_code"];
             $boxBarcode = $itemData["box_barcode"];
@@ -107,12 +107,40 @@ class ItemDao {
                 $item->setPosition($position);
                 $item->addCode($itemCode);
                 $item->addBarcode($itemBarcode);
-                
+
                 $items[$itemId] = $item;
             }
         }
 
         return $items;
+    }
+
+    public function insertUploadedData($items) {
+        $itemsData = array();
+        foreach ($items as $item) {
+            $itemCode = $item->getCodes()[0];
+            $itemBarcode = $item->getBarcodes()[0];
+            $itemDescription = $item->getDescription();
+            $itemPosition = $item->getPosition();
+            $row = array($itemDescription, $itemPosition);
+            array_push($itemsData, $row);
+        }
+
+
+        try {
+            $this->connection->beginTransaction();
+
+            $chunkedArray = array_chunk($itemsData, 5000);
+            foreach ($chunkedArray as $data) {
+                $stmt = $this->connection->multiPrepare('INSERT INTO item (description, position)', $itemsData);
+                $stmt->multiExecute($itemsData);
+            }
+            $this->connection->commit();
+            echo "New Data inserted successfully into database" . "<br>";
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+        }
     }
 
 }

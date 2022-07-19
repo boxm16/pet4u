@@ -1,5 +1,7 @@
 <?php
 
+require_once 'mPDO.php';
+
 class DataBaseConnection {
 
     private $db;
@@ -28,7 +30,8 @@ class DataBaseConnection {
             PDO::ATTR_EMULATE_PREPARES => false,
         ];
         try {
-            $pdo = new PDO($dsn, $user, $pass, $options);
+            $pdo = new mPDO($dsn, $user, $pass, $options);
+            return $pdo;
         } catch (\PDOException $e) {
             throw new \PDOException($e->getMessage(), (int) $e->getCode());
         }

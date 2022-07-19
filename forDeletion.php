@@ -1,8 +1,11 @@
 <?php
 require_once 'Controller/UploadController.php';
+require_once 'Controller/ItemController.php';
 require_once 'Model/Item.php';
 $uploadController = new UploadController();
 $items = $uploadController->saveUploadedDataIntoDatabase();
+
+$itemController = new ItemController();
 ?>
 <!DOCTYPE html>
 
@@ -21,13 +24,15 @@ $items = $uploadController->saveUploadedDataIntoDatabase();
         <table >
             <?php
             foreach ($items as $item) {
-                echo "<tr>"
-                . "<td>" . $item->getCodes()[0] . "</td>"
-                . "<td>" . $item->getBarcodes()[0] . "</td>"
-                . "<td>" . $item->getDescription() . "</td>"
-                . "<td>" . $item->getPosition() . "</td>"
-                . "</tr>";
+                $itemController->addNewItem($item);
+                /*  echo "<tr>"
+                  . "<td>" . $item->getCodes()[0] . "</td>"
+                  . "<td>" . $item->getBarcodes()[0] . "</td>"
+                  . "<td>" . $item->getDescription() . "</td>"
+                  . "<td>" . $item->getPosition() . "</td>"
+                  . "</tr>"; */
             }
+            echo "done";
             ?>
         </table>
     </body>
