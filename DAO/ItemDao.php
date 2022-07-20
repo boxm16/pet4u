@@ -128,30 +128,33 @@ class ItemDao {
                 . "INNER JOIN item_barcode ON item.id=item_barcode.item_id "
                 . "INNER JOIN item_code ON item.id=item_code.item_id "
                 . "INNER JOIN item_box ON item.id=item_box.item_id "
-                . "WHERE item_barcode='12345678'";
+                . "WHERE item_barcode='123456789'";
 
         try {
             $result = $this->connection->query($sql)->fetch(PDO::FETCH_ASSOC);
-            var_dump($result);
         } catch (\PDOException $e) {
             echo $e->getMessage() . " Error Code:";
             echo $e->getCode() . "<br>";
             exit;
         }
-        $itemId = $result["id"];
-        $description = $result["description"];
-        $position = $result["position"];
-
-        $itemBarcode = $result["item_barcode"];
-        $itemCode = $result["item_code"];
-       
         $item = new Item();
-        $item->setId($itemId);
-        $item->setDescription($description);
-        $item->setPosition($position);
-        $item->addCode($itemCode);
-        $item->addBarcode($itemBarcode);
+        if ($result) {
+            $itemId = $result["id"];
+            $description = $result["description"];
+            $position = $result["position"];
 
+            $itemBarcode = $result["item_barcode"];
+            $itemCode = $result["item_code"];
+
+
+            $item->setId($itemId);
+            $item->setDescription($description);
+            $item->setPosition("ΘΕΣΗ:".$position);
+            $item->addCode($itemCode);
+            $item->addBarcode($itemBarcode);
+        } else {
+           $item->setPosition("Barcode not found"); 
+        }
         return $item;
     }
 
