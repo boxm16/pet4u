@@ -116,31 +116,12 @@ class ItemDao {
     }
 
     public function insertUploadedData($items) {
-        $itemsData = array();
-        foreach ($items as $item) {
-            $itemCode = $item->getCodes()[0];
-            $itemBarcode = $item->getBarcodes()[0];
-            $itemDescription = $item->getDescription();
-            $itemPosition = $item->getPosition();
-            $row = array($itemDescription, $itemPosition);
-            array_push($itemsData, $row);
+        foreach ($items as $item){
+            $this->addNewItem($item);
+            echo $item->getDescription();
+            echo "<br>";
         }
-
-
-        try {
-            $this->connection->beginTransaction();
-
-            $chunkedArray = array_chunk($itemsData, 5000);
-            foreach ($chunkedArray as $data) {
-                $stmt = $this->connection->multiPrepare('INSERT INTO item (description, position)', $itemsData);
-                $stmt->multiExecute($itemsData);
-            }
-            $this->connection->commit();
-            echo "New Data inserted successfully into database" . "<br>";
-        } catch (\PDOException $e) {
-            echo $e->getMessage() . " Error Code:";
-            echo $e->getCode() . "<br>";
-        }
+        
     }
 
 }
