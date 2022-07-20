@@ -150,7 +150,7 @@ class ItemDao {
 
             $item->setId($itemId);
             $item->setDescription($description);
-            $item->setPosition("ΘΕΣΗ:".$position);
+            $item->setPosition("POSITION:".$position);
             $item->addCode($itemCode);
             $item->addBarcode($itemBarcode);
         } else {
