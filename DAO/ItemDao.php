@@ -116,12 +116,43 @@ class ItemDao {
     }
 
     public function insertUploadedData($items) {
-        foreach ($items as $item){
+        foreach ($items as $item) {
             $this->addNewItem($item);
             echo $item->getDescription();
             echo "<br>";
         }
-        
+    }
+
+    public function getItemFromBarcode($barcode) {
+        $sql = "SELECT * FROM item "
+                . "INNER JOIN item_barcode ON item.id=item_barcode.item_id "
+                . "INNER JOIN item_code ON item.id=item_code.item_id "
+                . "INNER JOIN item_box ON item.id=item_box.item_id "
+                . "WHERE item_barcode='12345678'";
+
+        try {
+            $result = $this->connection->query($sql)->fetch(PDO::FETCH_ASSOC);
+            var_dump($result);
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+            exit;
+        }
+        $itemId = $result["id"];
+        $description = $result["description"];
+        $position = $result["position"];
+
+        $itemBarcode = $result["item_barcode"];
+        $itemCode = $result["item_code"];
+       
+        $item = new Item();
+        $item->setId($itemId);
+        $item->setDescription($description);
+        $item->setPosition($position);
+        $item->addCode($itemCode);
+        $item->addBarcode($itemBarcode);
+
+        return $item;
     }
 
 }

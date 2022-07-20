@@ -30,4 +30,8 @@ class ItemController {
         return $this->itemDao->getAllItems();
     }
 
+    public function getItemFromBarcode($barcode) {
+        return $this->itemDao->getItemFromBarcode($barcode);
+    }
+
 }
