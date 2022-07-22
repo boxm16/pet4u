@@ -138,7 +138,7 @@ class ItemDao {
             echo $e->getCode() . "<br>";
             exit;
         }
-        var_dump($result);
+       
         $item = new Item();
         if (!$result) {
             $item->setPosition("Barcode not found");
