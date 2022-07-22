@@ -127,9 +127,9 @@ class ItemDao {
         $sql = "SELECT * FROM item "
                 . "INNER JOIN item_barcode ON item.id=item_barcode.item_id "
                 . "INNER JOIN item_code ON item.id=item_code.item_id "
-                . "INNER JOIN item_box ON item.id=item_box.item_id "
+             //   . "INNER JOIN item_box ON item.id=item_box.item_id "
                 . "WHERE item_barcode='$barcode'";
-        
+
 
         try {
             $result = $this->connection->query($sql)->fetch(PDO::FETCH_ASSOC);
@@ -138,8 +138,12 @@ class ItemDao {
             echo $e->getCode() . "<br>";
             exit;
         }
+        var_dump($result);
         $item = new Item();
-        if ($result) {
+        if (!$result) {
+            $item->setPosition("Barcode not found");
+        } else {
+
             $itemId = $result["id"];
             $description = $result["description"];
             $position = $result["position"];
@@ -150,11 +154,9 @@ class ItemDao {
 
             $item->setId($itemId);
             $item->setDescription($description);
-            $item->setPosition("POSITION:".$position);
+            $item->setPosition("POSITION:" . $position);
             $item->addCode($itemCode);
             $item->addBarcode($itemBarcode);
-        } else {
-           $item->setPosition("Barcode not found"); 
         }
         return $item;
     }

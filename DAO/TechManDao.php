@@ -34,7 +34,7 @@ class TechManDao {
 
     public function createItemTable() {
         $sql = "CREATE TABLE `item` (
-  `id` INT(6) NOT NULL AUTO_INCREMENT,
+  `id` INT(6) NOT NULL ,
   `description` VARCHAR(125) NULL, 
   `position` VARCHAR(25) NULL,
   `site` VARCHAR(3000) NULL,
