@@ -11,7 +11,10 @@ class ItemController {
     }
 
     public function addNewItem($item) {
-        $itemId = $this->itemDao->addNewItem($item);
+        $itemId = '1111111';
+
+        $item->setId($itemId);
+        $this->itemDao->addNewItem($item);
 
         $code = $item->getCodes()[0];
         $this->itemDao->addItemCode($itemId, $code);

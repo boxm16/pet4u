@@ -15,3 +15,5 @@ used email -berishvilebiOnWHA@gmail.com
 Password: athina2004!
 
 e-mail password athina2004
+
+for Android Application KeyStore password :athina2004

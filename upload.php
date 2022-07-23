@@ -19,10 +19,12 @@ if (isset($_POST["submit"])) {//first checking if request commming form submit o
     }
 
 // Allow certain file formats
-    if ($fileType != "xlsx") {
-        $errorMessage = "ONLY xlsx FORMAT FILES ALLOWED";
-        $uploadOk = 0;
-    }
+    /*  if ($fileType != "xlsx") {
+      $errorMessage = "ONLY xlsx FORMAT FILES ALLOWED";
+      $uploadOk = 0;
+      }
+     * */
+
     if ($_FILES['fileToUpload']['size'] == 0) {
         $errorMessage = "NO FILE WAS CHOOSEN";
         $uploadOk = 0;
@@ -33,12 +35,12 @@ if (isset($_POST["submit"])) {//first checking if request commming form submit o
         $errorAlert = "FILE COULD NOT BE UPLOADED, TRY AGAIN";
 // if everything is ok, try to upload file
     } else {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "uploads/itemsExcelFile"  . ".xlsx")) {
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "uploads/app.apk")) {
             echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
 
             //this part is for database iserton
-           $uploadController = new UploadController();
-            $uploadController->saveUploadedDataIntoDatabase();
+            //$uploadController = new UploadController();
+          //  $uploadController->saveUploadedDataIntoDatabase();
             // here end insertion part
             deployFile();
         } else {
@@ -50,7 +52,7 @@ if (isset($_POST["submit"])) {//first checking if request commming form submit o
 
 function deployFile() {
     // header("Location:items.php");
-    header("Location:forDeletion.php");
+    header("Location:upload.php");
 }
 ?>
 <!DOCTYPE html>
@@ -99,7 +101,7 @@ function deployFile() {
     </head>
     <body>
 
-       
+
         <div class="container">
             <div class="row">
                 <div class="col">

@@ -15,23 +15,22 @@ class ItemDao {
     }
 
     public function addNewItem($item) {
+        $id = $item->getId();
         $description = $item->getDescription();
         $position = $item->getPosition();
         $site = $item->getSite();
 
 
-        $sql = "INSERT INTO item (description, position, site) "
-                . "        VALUES (:description, :position, :site)";
+        $sql = "INSERT INTO item (id, description, position, site) "
+                . "        VALUES (:id,:description, :position, :site)";
 
         $statement = $this->connection->prepare($sql);
 
+        $statement->bindValue(':id', $id);
         $statement->bindValue(':description', $description);
         $statement->bindValue(':position', $position);
         $statement->bindValue(':site', $site);
         $statement->execute();
-        $itemId = $this->connection->lastInsertId();
-
-        return $itemId;
     }
 
     public function addItemCode($itemId, $code) {
@@ -127,7 +126,7 @@ class ItemDao {
         $sql = "SELECT * FROM item "
                 . "INNER JOIN item_barcode ON item.id=item_barcode.item_id "
                 . "INNER JOIN item_code ON item.id=item_code.item_id "
-             //   . "INNER JOIN item_box ON item.id=item_box.item_id "
+                //   . "INNER JOIN item_box ON item.id=item_box.item_id "
                 . "WHERE item_barcode='$barcode'";
 
 
@@ -138,7 +137,7 @@ class ItemDao {
             echo $e->getCode() . "<br>";
             exit;
         }
-       
+
         $item = new Item();
         if (!$result) {
             $item->setPosition("Barcode not found");
