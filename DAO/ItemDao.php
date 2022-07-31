@@ -123,6 +123,18 @@ class ItemDao {
     }
 
     public function getItemFromBarcode($barcode) {
+        //first inserting barcode into last scanned barcode
+        
+        $insertionSQL="INSERT INTO last_scanned (barcode) VALUES ($barcode)";
+        
+         try {
+         $this->connection->exec($insertionSQL);
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+            exit;
+        }
+        
         $sql = "SELECT * FROM item "
                 . "INNER JOIN item_barcode ON item.id=item_barcode.item_id "
                 . "INNER JOIN item_code ON item.id=item_code.item_id "
