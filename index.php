@@ -11,4 +11,6 @@ echo "<br>";
 echo "<a href='itemFinder.php'>Find Item</a>";
 echo "<br>";
 echo "<a href='download.php'>DOWNLOAD</a>";
+echo "<br>";
+echo "<a href='lastScanned.php'>LAST SCANNED BARCODES</a>";
 ?>
