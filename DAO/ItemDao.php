@@ -125,7 +125,7 @@ class ItemDao {
     public function getItemFromBarcode($barcode) {
         //first inserting barcode into last scanned barcode
         
-        $insertionSQL="INSERT INTO last_scanned (barcode) VALUES ($barcode)";
+        $insertionSQL="INSERT INTO last_scanned (barcode) VALUES ('$barcode')";
         
          try {
          $this->connection->exec($insertionSQL);
