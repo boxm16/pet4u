@@ -24,7 +24,9 @@ try {
         <title></title>
     </head>
     <body>
-         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
+        <a href="index.php">INDEX</a>
+        <hr>
+        <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="POST">
             <input hidden name="refresh">
             <center>   <button style="background-color: green" type="submit">REFRESH</button></center>
         </form>
