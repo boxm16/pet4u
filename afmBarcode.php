@@ -119,7 +119,7 @@ and open the template in the editor.
                 </td>
                 <td style="width: 20px"></td>
                 <td>
-                    <img src="images/barcode_ASTRON_XIMIKA.gif" style="width:400px;height:200px;" >
+                    <img src="images/barcode_astron_ximika.gif" style="width:400px;height:200px;" >
                 </td>
             </tr>
 
