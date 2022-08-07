@@ -11,23 +11,229 @@ and open the template in the editor.
     </head>
     <body>
 
-        <table>
+        <table align="right">
+            
             <tr>
                 <td>
-                    <img src="images/Perfect_Pet.png" style="width:500px;height:200px;" alt="Italian Trulli">
+                    <p style="font-size:100px">ΤΡΙΤΗ</p>
                 </td>
+                <td style="width: 20px"></td>
                 <td>
-                    <img src="images/barcode_perfec_pet.gif" style="width:400px;height:200px;" alt="Italian Trulli">
+                    <img src="images/nestle.jpg" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_nestle.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p style="font-size:100px">ΤΡΙΤΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/kompa.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_kompa.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p style="font-size:100px">ΤΕΤΑΡΤΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/royal.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_royal.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+
+
+            <tr>
+                 <td>
+                    <p style="font-size:100px">ΠΕΜΠΤΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/petline.jpg" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_petline.gif" style="width:400px;height:200px;" >
                 </td>
             </tr>
             <tr>
                 <td>
-                    <img src="images/passalis.png" style="width:500px;height:200px;" alt="Italian Trulli">
+                    <p style="font-size:100px">ΠΕΜΠΤΗ</p>
                 </td>
+                <td style="width: 20px"></td>
                 <td>
-                    <img src="images/barcode_passalis.gif" style="width:400px;height:200px;" alt="Italian Trulli">
+                    <img src="images/milann.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_milann.gif" style="width:400px;height:200px;" >
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <p style="font-size:100px">ΠΕΜΠΤΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/trixie.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_trixie.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+
+            <tr>
+              <td>
+                   <p style="font-size:100px">ΠΕΜΠΤΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/lydia.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_lydia.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+            <tr>
+              <td>
+                    <p style="font-size:100px">ΠΕΜΠΤΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/ASTRON_XIMIKA.jpg" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_ASTRON_XIMIKA.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                   <p style="font-size:100px">ΠΕΜΠΤΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/Perfect_Pet.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_perfec_pet.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+            <tr>
+             <td>
+                    <p style="font-size:100px">ΠΕΜΠΤΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/georgiadis.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_georgiadis.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p style="font-size:100px">ΠΑΡΑΣΚΕΥΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/passalis.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_passalis.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+            
+             <tr>
+                <td>
+                    <p style="font-size:100px">ΠΑΡΑΣΚΕΥΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/AFOI_MPOUTOU.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_mpoutou.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+            
+             <tr>
+                <td>
+                    <p style="font-size:100px">ΠΑΡΑΣΚΕΥΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/argos_tympakianakis.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_argos_timpakianakis.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+            
+             <tr>
+                <td>
+                    <p style="font-size:100px">ΠΑΡΑΣΚΕΥΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/pharm_animal.jpg" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_phasrmAnimal.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <p style="font-size:100px">ΠΑΡΑΣΚΕΥΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/pet_interest_skias.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_pet_interest_skias.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+            
+             <tr>
+                <td>
+                    <p style="font-size:100px">ΠΑΡΑΣΚΕΥΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/leotsakos.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_leotsakos.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
+
+
         </table>
 
         <?php
