@@ -21,7 +21,7 @@ and open the template in the editor.
                 </td>
                 <td style="width: 20px"></td>
                 <td>
-                    <img src="images/barcode_nestle.gif" style="width:400px;height:200px;" >
+                    <img src="images/barcode_NESTLE.gif" style="width:400px;height:200px;" >
                 </td>
             </tr>
 
@@ -60,7 +60,7 @@ and open the template in the editor.
                 </td>
                 <td style="width: 20px"></td>
                 <td>
-                    <img src="images/petline.jpg" style="width:500px;height:200px;" >
+                    <img src="images/PetLine.jpg" style="width:500px;height:200px;" >
                 </td>
                 <td style="width: 20px"></td>
                 <td>
@@ -117,7 +117,7 @@ and open the template in the editor.
                 </td>
                 <td style="width: 20px"></td>
                 <td>
-                    <img src="images/barcode_astron_ximika.gif" style="width:400px;height:200px;" >
+                    <img src="images/barcode_ASTRON_XIMIKA.gif" style="width:400px;height:200px;" >
                 </td>
             </tr>
 
