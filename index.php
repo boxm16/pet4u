@@ -14,5 +14,5 @@ echo "<a href='download.php'>DOWNLOAD</a>";
 echo "<br>";
 echo "<a href='lastScanned.php'>LAST SCANNED BARCODES</a>";
 echo "<br>";
-echo "<a href='afmBarcode.php'>AFM BARCODE</a>";
+echo "<a href='afmBarcode.php' target='_blank'>AFM BARCODE</a>";
 ?>
