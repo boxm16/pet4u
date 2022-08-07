@@ -10,9 +10,7 @@ and open the template in the editor.
         <title>AFM_BARCODE</title>
     </head>
     <body>
-
         <table align="right">
-            
             <tr>
                 <td>
                     <p style="font-size:100px">ΤΡΙΤΗ</p>
@@ -51,13 +49,13 @@ and open the template in the editor.
                 </td>
                 <td style="width: 20px"></td>
                 <td>
-                    <img src="images/barcode_royal.gif" style="width:400px;height:200px;" >
+                    <img src="images/barcode_ROYAL.gif" style="width:400px;height:200px;" >
                 </td>
             </tr>
 
 
             <tr>
-                 <td>
+                <td>
                     <p style="font-size:100px">ΠΕΜΠΤΗ</p>
                 </td>
                 <td style="width: 20px"></td>
@@ -97,8 +95,8 @@ and open the template in the editor.
             </tr>
 
             <tr>
-              <td>
-                   <p style="font-size:100px">ΠΕΜΠΤΗ</p>
+                <td>
+                    <p style="font-size:100px">ΠΕΜΠΤΗ</p>
                 </td>
                 <td style="width: 20px"></td>
                 <td>
@@ -110,7 +108,7 @@ and open the template in the editor.
                 </td>
             </tr>
             <tr>
-              <td>
+                <td>
                     <p style="font-size:100px">ΠΕΜΠΤΗ</p>
                 </td>
                 <td style="width: 20px"></td>
@@ -125,7 +123,7 @@ and open the template in the editor.
 
             <tr>
                 <td>
-                   <p style="font-size:100px">ΠΕΜΠΤΗ</p>
+                    <p style="font-size:100px">ΠΕΜΠΤΗ</p>
                 </td>
                 <td style="width: 20px"></td>
                 <td>
@@ -137,7 +135,7 @@ and open the template in the editor.
                 </td>
             </tr>
             <tr>
-             <td>
+                <td>
                     <p style="font-size:100px">ΠΕΜΠΤΗ</p>
                 </td>
                 <td style="width: 20px"></td>
@@ -162,8 +160,8 @@ and open the template in the editor.
                     <img src="images/barcode_passalis.gif" style="width:400px;height:200px;" >
                 </td>
             </tr>
-            
-             <tr>
+
+            <tr>
                 <td>
                     <p style="font-size:100px">ΠΑΡΑΣΚΕΥΗ</p>
                 </td>
@@ -176,8 +174,8 @@ and open the template in the editor.
                     <img src="images/barcode_mpoutou.gif" style="width:400px;height:200px;" >
                 </td>
             </tr>
-            
-             <tr>
+
+            <tr>
                 <td>
                     <p style="font-size:100px">ΠΑΡΑΣΚΕΥΗ</p>
                 </td>
@@ -190,8 +188,8 @@ and open the template in the editor.
                     <img src="images/barcode_argos_timpakianakis.gif" style="width:400px;height:200px;" >
                 </td>
             </tr>
-            
-             <tr>
+
+            <tr>
                 <td>
                     <p style="font-size:100px">ΠΑΡΑΣΚΕΥΗ</p>
                 </td>
@@ -218,8 +216,8 @@ and open the template in the editor.
                     <img src="images/barcode_pet_interest_skias.gif" style="width:400px;height:200px;" >
                 </td>
             </tr>
-            
-             <tr>
+
+            <tr>
                 <td>
                     <p style="font-size:100px">ΠΑΡΑΣΚΕΥΗ</p>
                 </td>
