@@ -4,14 +4,14 @@ class Item {
 
     private $id;
     private $description;
-    private $codes;
+    private $code;
     private $barcodes;
     private $boxes;
     private $position;
     private $site;
 
     function __construct() {
-        $this->codes = array();
+
         $this->barcodes = array();
         $this->boxBarcodes = array();
     }
@@ -24,8 +24,8 @@ class Item {
         return $this->description;
     }
 
-    function getCodes() {
-        return $this->codes;
+    function getCode() {
+        return $this->code;
     }
 
     function getBarcodes() {
@@ -52,8 +52,8 @@ class Item {
         $this->description = $description;
     }
 
-    function setCodes($codes): void {
-        $this->codes = $codes;
+    function setCode($code): void {
+        $this->code = $code;
     }
 
     function setBarcodes($barcodes): void {

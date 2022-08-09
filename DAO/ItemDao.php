@@ -124,50 +124,66 @@ class ItemDao {
 
     public function getItemFromBarcode($barcode) {
         //first inserting barcode into last scanned barcode
-        
-        $insertionSQL="INSERT INTO last_scanned (barcode) VALUES ('$barcode')";
-        
-         try {
-         $this->connection->exec($insertionSQL);
+
+        $insertionSQL = "INSERT INTO last_scanned (barcode) VALUES ('$barcode')";
+
+        try {
+            $this->connection->exec($insertionSQL);
         } catch (\PDOException $e) {
             echo $e->getMessage() . " Error Code:";
             echo $e->getCode() . "<br>";
             exit;
         }
-        
+        //----------------------------------------------------------
+        //get id
+        $idSql = "SELECT item_id FROM item_barcode WHERE  item_barcode='$barcode'";
+        try {
+            $result = $this->connection->query($idSql)->fetch();
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+            exit;
+        }
+        $id = $result["item_id"];
+
+
+
         $sql = "SELECT * FROM item "
                 . "INNER JOIN item_barcode ON item.id=item_barcode.item_id "
                 . "INNER JOIN item_code ON item.id=item_code.item_id "
                 //   . "INNER JOIN item_box ON item.id=item_box.item_id "
-                . "WHERE item_barcode='$barcode'";
+                . "WHERE id='$id'";
 
 
         try {
-            $result = $this->connection->query($sql)->fetch(PDO::FETCH_ASSOC);
+            $resultRows = $this->connection->query($sql)->fetchAll();
         } catch (\PDOException $e) {
             echo $e->getMessage() . " Error Code:";
             echo $e->getCode() . "<br>";
             exit;
         }
+
 
         $item = new Item();
         if (!$result) {
             $item->setPosition("Barcode not found");
         } else {
 
-            $itemId = $result["id"];
-            $description = $result["description"];
-            $position = $result["position"];
+            foreach ($resultRows as $row) {
+                $itemId = $row["id"];
+                $description = $row["description"];
+                $position = $row["position"];
+                $itemCode = $row["item_code"];
+                $itemBarcode = $row["item_barcode"];
 
-            $itemBarcode = $result["item_barcode"];
-            $itemCode = $result["item_code"];
 
 
-            $item->setId($itemId);
-            $item->setDescription($description);
-            $item->setPosition("POSITION:" . $position);
-            $item->addCode($itemCode);
-            $item->addBarcode($itemBarcode);
+                $item->setId($itemId);
+                $item->setDescription($description);
+                $item->setPosition("POSITION:" . $position);
+                $item->setCode($itemCode);
+                $item->addBarcode($itemBarcode);
+            }
         }
         return $item;
     }
