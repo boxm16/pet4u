@@ -8,7 +8,7 @@ $position = $item->getPosition();
 $output = $position."\ALTERNATIVE CODES";
 $barcodes = $item->getBarcodes();
 foreach ($barcodes as $barcode) {
-    $output.='\\'.$barcode;
+    $output.='\n'.$barcode;
 }
 echo $output;
 
