@@ -230,6 +230,20 @@ and open the template in the editor.
                     <img src="images/barcode_leotsakos.gif" style="width:400px;height:200px;" >
                 </td>
             </tr>
+            
+             <tr>
+                <td>
+                    <p style="font-size:100px">ΠΑΡΑΣΚΕΥΗ</p>
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/cosmospet_logo.png" style="width:500px;height:200px;" >
+                </td>
+                <td style="width: 20px"></td>
+                <td>
+                    <img src="images/barcode_cosmos.gif" style="width:400px;height:200px;" >
+                </td>
+            </tr>
 
 
         </table>
