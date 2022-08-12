@@ -15,4 +15,6 @@ echo "<br>";
 echo "<a href='lastScanned.php'>LAST SCANNED BARCODES</a>";
 echo "<br>";
 echo "<a href='afmBarcode.php' target='_blank'>AFM BARCODE</a>";
+echo "<br>";
+echo "<a href='allPositions.php' target='_blank'>SHOW ALL POSITIONS</a>";
 ?>

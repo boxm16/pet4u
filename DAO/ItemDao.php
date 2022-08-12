@@ -188,4 +188,43 @@ class ItemDao {
         return $item;
     }
 
+    public function getAllPositions() {
+        $items = array();
+        $sql = "SELECT * FROM item  ORDER BY item.position";
+
+        try {
+            $result = $this->connection->query($sql)->fetchAll();
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+            exit;
+        }
+
+        foreach ($result as $itemData) {
+
+
+            $itemId = $itemData["id"];
+            $description = $itemData["description"];
+            $position = $itemData["position"];
+
+         //   $itemBarcode = $itemData["item_barcode"];
+           // $itemCode = $itemData["item_code"];
+           // $boxBarcode = $itemData["box_barcode"];
+          //  $itemsInBox = $itemData["item_quantity"];
+
+            if (!array_key_exists($itemId, $items)) {
+                $item = new Item();
+                $item->setId($itemId);
+                $item->setDescription($description);
+                $item->setPosition($position);
+           //     $item->addCode($itemCode);
+             //   $item->addBarcode($itemBarcode);
+
+                $items[$itemId] = $item;
+            }
+        }
+
+        return $items;
+    }
+
 }
