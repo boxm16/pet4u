@@ -1,7 +1,7 @@
 <?php
-
 require_once 'Controller/TechManController.php';
 
+echo "<h1>";
 //echo "<a href='addNewItem.php'>Add New Item</a>";
 //echo "<br>";
 //echo "<a href='items.php'>All Items</a>";
@@ -17,4 +17,6 @@ echo "<br>";
 echo "<a href='afmBarcode.php' target='_blank'>AFM BARCODE</a>";
 echo "<br>";
 echo "<a href='allPositions.php' target='_blank'>SHOW ALL POSITIONS</a>";
+
+echo "</h1>";
 ?>
