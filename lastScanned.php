@@ -38,7 +38,8 @@ try {
             foreach ($result as $row) {
 
                 $barcode = $row["barcode"];
-                echo $barcode;
+                 $notes = $row["notes"];
+                echo "<h1>" .$barcode."----".$notes."</h1>";
                 echo "<br>";
             }
         }
