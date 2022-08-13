@@ -1,4 +1,4 @@
 <?php
-
-echo "lapppa";
+$barcode=$_POST["barcode"];
+echo $barcode;
 
