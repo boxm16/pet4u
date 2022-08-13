@@ -17,7 +17,7 @@ $allPositions = $itemController->getAllPositions();
           
             $position = $item->getPosition();
             $description = $item->getDescription();
-            echo $position."-". $description;
+            echo "<h2>".$position."-". $description".</h2>";
             echo "<br>";
         }
         ?>
