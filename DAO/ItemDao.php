@@ -226,5 +226,16 @@ class ItemDao {
 
         return $items;
     }
+    
+   public function saveNotes($barcode, $notes){
+      $insertionSQL = "INSERT INTO last_scanned (barcode, notes) VALUES ('$barcode', '$notes')";
+        try {
+            $this->connection->exec($insertionSQL);
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+            exit;
+        }  
+   }
 
 }
