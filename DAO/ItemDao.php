@@ -232,10 +232,11 @@ class ItemDao {
         try {
             $this->connection->exec($insertionSQL);
         } catch (\PDOException $e) {
-            echo $e->getMessage() . " Error Code:";
-            echo $e->getCode() . "<br>";
-            exit;
-        }  
+            //echo $e->getMessage() . " Error Code:";
+          //  echo $e->getCode() . "<br>";
+            return $e->getMessage() . " Error Code:".$e->getCode() . "<br>";
+        } 
+        return "success";
    }
 
 }
