@@ -2,7 +2,6 @@
 
 require_once 'DataBaseConnection.php';
 require_once 'Model/Item.php';
-require_once 'Model/Box.php';
 
 class ItemDao {
 
@@ -60,7 +59,7 @@ class ItemDao {
     public function getItemFromBarcode($barcode) {
         //first inserting barcode into last scanned barcode
 
-        $insertionSQL = "INSERT INTO notes (barcode, note) VALUES ('$barcode', 'LAST SCANNED')";
+        $insertionSQL = "INSERT  INTO notes (barcode, note) VALUES ('$barcode', 'SCANNED FOR POSITION AND/OR ALTERCODES')";
 
         try {
             $this->connection->exec($insertionSQL);
@@ -106,15 +105,17 @@ class ItemDao {
                 $itemId = $row["id"];
                 $description = $row["description"];
                 $position = $row["position"];
-                $itemBarcode = $row["item_altercode"];
+                $altercode = $row["item_altercode"];
 
 
 
                 $item->setId($itemId);
                 $item->setDescription($description);
                 $item->setPosition("POSITION:" . $position);
-                $item->setCode($itemCode);
-                $item->addBarcode($itemBarcode);
+                $item->addAltercode($altercode);
+                if ((strlen($altercode) == 8 || strlen($altercode) == 9) && substr($altercode, -5, 1) == ".") {
+                   $item->setSiteCode($altercode) ;
+                }
             }
         }
         return $item;

@@ -16,24 +16,6 @@ if (isset($_GET["deleteTables"])) {
     $techManController->deleteDatabaseTables();
 }
 
-if (isset($_POST["addNewItem"])) {
 
-    $item = new Item();
-    $item->setDescription($_POST["description"]);
-    $item->addCode($_POST["code"]);
-    $item->addBarcode($_POST["barcode"]);
-    $item->setPosition($_POST["position"]);
-    $item->setSite($_POST["site"]);
-    $itemController = new ItemController();
-    $itemId = $itemController->addNewItem($item);
-
-    $box = new Box();
-    $box->setItemId($itemId);
-    $box->setBoxBarcode($_POST["boxBarcode"]);
-    $box->setItemsQuantity($_POST["itemsInBox"]);
-    $itemController->addItemBox($box);
-    header("Location: items.php");
-    exit;
-}
 
 

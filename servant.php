@@ -6,9 +6,9 @@ $barcode = $_POST["barcode"];
 $item = $itemController->getItemFromBarcode($barcode);
 $position = $item->getPosition();
 $output = $position."<br>---------------<br>ALTERNATIVE CODES<br>---------------";
-$barcodes = $item->getBarcodes();
-foreach ($barcodes as $barcode) {
-    $output.="<br>".$barcode;
+$altercodes = $item->getAltercodes();
+foreach ($altercodes as $altercode) {
+    $output.="<br>".$altercode;
 }
 echo $output;
 
