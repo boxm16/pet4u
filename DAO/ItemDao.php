@@ -14,63 +14,6 @@ class ItemDao {
         $this->connection = $this->databaseConnection->getConnection();
     }
 
-    public function addNewItem($item) {
-        $id = $item->getId();
-        $description = $item->getDescription();
-        $position = $item->getPosition();
-        $site = $item->getSite();
-
-
-        $sql = "INSERT INTO item (id, description, position, site) "
-                . "        VALUES (:id,:description, :position, :site)";
-
-        $statement = $this->connection->prepare($sql);
-
-        $statement->bindValue(':id', $id);
-        $statement->bindValue(':description', $description);
-        $statement->bindValue(':position', $position);
-        $statement->bindValue(':site', $site);
-        $statement->execute();
-    }
-
-    public function addItemCode($itemId, $code) {
-        $sql = "INSERT INTO item_code (item_id, item_code) "
-                . "        VALUES (:item_id, :item_code)";
-
-        $statement = $this->connection->prepare($sql);
-
-        $statement->bindValue(':item_id', $itemId);
-        $statement->bindValue(':item_code', $code);
-        $statement->execute();
-    }
-
-    public function addItemBarcode($itemId, $barcode) {
-        $sql = "INSERT INTO item_barcode (item_id, item_barcode) "
-                . "        VALUES (:item_id, :item_barcode)";
-
-        $statement = $this->connection->prepare($sql);
-
-        $statement->bindValue(':item_id', $itemId);
-        $statement->bindValue(':item_barcode', $barcode);
-        $statement->execute();
-    }
-
-    public function addItemBox($box) {
-        $itemId = $box->getItemId();
-
-        $boxBarcode = $box->getBoxBarcode();
-        $itemQuantity = $box->getItemsQuantity();
-        $sql = "INSERT INTO item_box (item_id, box_barcode, item_quantity) "
-                . "        VALUES (:item_id, :box_barcode, :item_quantity)";
-
-        $statement = $this->connection->prepare($sql);
-
-        $statement->bindValue(':item_id', $itemId);
-        $statement->bindValue(':box_barcode', $boxBarcode);
-        $statement->bindValue(':item_quantity', $itemQuantity);
-        $statement->execute();
-    }
-
     public function getAllItems() {
 
         $items = array();
@@ -114,18 +57,10 @@ class ItemDao {
         return $items;
     }
 
-    public function insertUploadedData($items) {
-        foreach ($items as $item) {
-            $this->addNewItem($item);
-            echo $item->getDescription();
-            echo "<br>";
-        }
-    }
-
     public function getItemFromBarcode($barcode) {
         //first inserting barcode into last scanned barcode
 
-        $insertionSQL = "INSERT INTO last_scanned (barcode) VALUES ('$barcode')";
+        $insertionSQL = "INSERT INTO notes (barcode, note) VALUES ('$barcode', 'LAST SCANNED')";
 
         try {
             $this->connection->exec($insertionSQL);
@@ -136,7 +71,7 @@ class ItemDao {
         }
         //----------------------------------------------------------
         //get id
-        $idSql = "SELECT item_id FROM item_barcode WHERE  item_barcode='$barcode'";
+        $idSql = "SELECT item_id FROM altercodes WHERE  item_altercode='$barcode'";
         try {
             $result = $this->connection->query($idSql)->fetch();
         } catch (\PDOException $e) {
@@ -149,9 +84,7 @@ class ItemDao {
 
 
         $sql = "SELECT * FROM item "
-                . "INNER JOIN item_barcode ON item.id=item_barcode.item_id "
-                . "INNER JOIN item_code ON item.id=item_code.item_id "
-                //   . "INNER JOIN item_box ON item.id=item_box.item_id "
+                . "INNER JOIN altercodes ON item.id=altercodes.item_id "
                 . "WHERE id='$id'";
 
 
@@ -173,8 +106,7 @@ class ItemDao {
                 $itemId = $row["id"];
                 $description = $row["description"];
                 $position = $row["position"];
-                $itemCode = $row["item_code"];
-                $itemBarcode = $row["item_barcode"];
+                $itemBarcode = $row["item_altercode"];
 
 
 
@@ -207,18 +139,18 @@ class ItemDao {
             $description = $itemData["description"];
             $position = $itemData["position"];
 
-         //   $itemBarcode = $itemData["item_barcode"];
-           // $itemCode = $itemData["item_code"];
-           // $boxBarcode = $itemData["box_barcode"];
-          //  $itemsInBox = $itemData["item_quantity"];
+            //   $itemBarcode = $itemData["item_barcode"];
+            // $itemCode = $itemData["item_code"];
+            // $boxBarcode = $itemData["box_barcode"];
+            //  $itemsInBox = $itemData["item_quantity"];
 
             if (!array_key_exists($itemId, $items)) {
                 $item = new Item();
                 $item->setId($itemId);
                 $item->setDescription($description);
                 $item->setPosition($position);
-           //     $item->addCode($itemCode);
-             //   $item->addBarcode($itemBarcode);
+                //     $item->addCode($itemCode);
+                //   $item->addBarcode($itemBarcode);
 
                 $items[$itemId] = $item;
             }
@@ -226,17 +158,17 @@ class ItemDao {
 
         return $items;
     }
-    
-   public function saveNotes($barcode, $notes){
-      $insertionSQL = "INSERT INTO last_scanned (barcode, notes) VALUES ('$barcode', '$notes')";
+
+    public function saveNotes($barcode, $notes) {
+        $insertionSQL = "INSERT INTO notes (barcode, note) VALUES ('$barcode', '$notes')";
         try {
             $this->connection->exec($insertionSQL);
         } catch (\PDOException $e) {
             //echo $e->getMessage() . " Error Code:";
-          //  echo $e->getCode() . "<br>";
-            return $e->getMessage() . " Error Code:".$e->getCode() . "<br>";
-        } 
+            //  echo $e->getCode() . "<br>";
+            return $e->getMessage() . " Error Code:" . $e->getCode() . "<br>";
+        }
         return "success";
-   }
+    }
 
 }

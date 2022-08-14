@@ -2,7 +2,6 @@
 
 require_once 'DataBaseConnection.php';
 
-
 class TechManDao {
 
     private $databaseConnection;
@@ -13,32 +12,13 @@ class TechManDao {
         $this->connection = $this->databaseConnection->getConnection();
     }
 
-    public function createItemCodeTable() {
-        $sql = "CREATE TABLE `item_code`  ( 
-            `item_id` INT(6) NOT NULL , 
-            `item_code` VARCHAR(100) NOT NULL , 
-            FOREIGN KEY (item_id) REFERENCES item(id) ON DELETE CASCADE)
-            ENGINE = InnoDB;
-       ";
-        try {
-            $this->connection->exec($sql);
-            echo "Table 'item_code' created successfully" . "<br>";
-        } catch (\PDOException $e) {
-            if ($e->getCode() == "42S01") {
-                echo "Table 'item_code' already exists" . "<br>";
-            } else {
-                echo $e->getMessage() . " Error Code:";
-                echo $e->getCode() . "<br>";
-            }
-        }
-    }
-
     public function createItemTable() {
         $sql = "CREATE TABLE `item` (
   `id` INT(6) NOT NULL ,
   `description` VARCHAR(125) NULL, 
   `position` VARCHAR(25) NULL,
-  `site` VARCHAR(3000) NULL,
+  `status` VARCHAR(100) NULL,
+  `sale_speed` VARCHAR(100) NULL,
    PRIMARY KEY (`id`))
    ENGINE = InnoDB
    DEFAULT CHARACTER SET = utf8;
@@ -56,19 +36,20 @@ class TechManDao {
         }
     }
 
-    public function createItemBarcodeTable() {
-        $sql = "CREATE TABLE `item_barcode`  ( 
+    public function createAltercodesTable() {
+        $sql = "CREATE TABLE `altercodes`  ( 
             `item_id` INT(6) NOT NULL , 
-            `item_barcode` VARCHAR(100) NOT NULL , 
+            `item_altercode` VARCHAR(100) NOT NULL ,
+            `type` VARCHAR(20)  NULL , 
             FOREIGN KEY (item_id) REFERENCES item(id) ON DELETE CASCADE)
             ENGINE = InnoDB;
        ";
         try {
             $this->connection->exec($sql);
-            echo "Table 'item_barcode' created successfully" . "<br>";
+            echo "Table 'altercodes' created successfully" . "<br>";
         } catch (\PDOException $e) {
             if ($e->getCode() == "42S01") {
-                echo "Table 'item_barcode' already exists" . "<br>";
+                echo "Table 'altercodes' already exists" . "<br>";
             } else {
                 echo $e->getMessage() . " Error Code:";
                 echo $e->getCode() . "<br>";
@@ -76,20 +57,18 @@ class TechManDao {
         }
     }
 
-    public function createItemBoxTable() {
-        $sql = "CREATE TABLE `item_box`  ( 
-            `item_id` INT(6) NOT NULL , 
-            `box_barcode` VARCHAR(100) NOT NULL , 
-            `item_quantity` INT(25) NOT NULL , 
-            FOREIGN KEY (item_id) REFERENCES item(id) ON DELETE CASCADE)
+    public function createNotesTable() {
+        $sql = "CREATE TABLE `notes`  ( 
+           `barcode` VARCHAR(100) NOT NULL , 
+           `note` VARCHAR(500)  NULL)
             ENGINE = InnoDB;
        ";
         try {
             $this->connection->exec($sql);
-            echo "Table 'item_box' created successfully" . "<br>";
+            echo "Table 'notes' created successfully" . "<br>";
         } catch (\PDOException $e) {
             if ($e->getCode() == "42S01") {
-                echo "Table 'item_box' already exists" . "<br>";
+                echo "Table 'notes' already exists" . "<br>";
             } else {
                 echo $e->getMessage() . " Error Code:";
                 echo $e->getCode() . "<br>";
@@ -98,7 +77,7 @@ class TechManDao {
     }
 
     //------------------ DELETION--------------------
-     public function deleteItemTable() {
+    public function deleteItemTable() {
         $sql = "DROP TABLE `item`";
         try {
             $this->connection->exec($sql);
@@ -109,18 +88,8 @@ class TechManDao {
         }
     }
 
-    public function deleteItemCodeTable() {
-        $sql = "DROP TABLE `item_code`";
-        try {
-            $this->connection->exec($sql);
-            echo "Table 'item_code' deleted successfully" . "<br>";
-        } catch (\PDOException $e) {
-            echo $e->getMessage() . " Error Code:";
-            echo $e->getCode() . "<br>";
-        }
-    }
-     public function deleteItemBarcodeTable() {
-        $sql = "DROP TABLE `item_barcode`";
+    public function deleteALtercodesTable() {
+        $sql = "DROP TABLE `altercodes`";
         try {
             $this->connection->exec($sql);
             echo "Table 'item_barcode' deleted successfully" . "<br>";
@@ -129,12 +98,12 @@ class TechManDao {
             echo $e->getCode() . "<br>";
         }
     }
-    
-    public function deleteItemBoxTable() {
-        $sql = "DROP TABLE `item_box`";
+
+    public function deleteNotesTable() {
+        $sql = "DROP TABLE `notes`";
         try {
             $this->connection->exec($sql);
-            echo "Table 'item_box' deleted successfully" . "<br>";
+            echo "Table 'notes' deleted successfully" . "<br>";
         } catch (\PDOException $e) {
             echo $e->getMessage() . " Error Code:";
             echo $e->getCode() . "<br>";

@@ -7,9 +7,8 @@ class TechManController {
     public function createDatabaseTables() {
         $techManDao = new TechManDao();
         $techManDao->createItemTable();
-        $techManDao->createItemCodeTable();
-        $techManDao->createItemBarcodeTable();
-        $techManDao->createItemBoxTable();
+        $techManDao->createAltercodesTable();
+        $techManDao->createNotesTable();
     }
 
     public function deleteDatabaseTables() {
@@ -17,9 +16,9 @@ class TechManController {
         $techManDao = new TechManDao();
         //precedence matter
 
-        $techManDao->deleteItemCodeTable();
-        $techManDao->deleteItemBarcodeTable();
-        $techManDao->deleteItemBoxTable();
+
+        $techManDao->deleteNotesTable();
+        $techManDao->deleteAltercodesTable();
         $techManDao->deleteItemTable();
     }
 
