@@ -3,11 +3,11 @@ require_once 'DAO/DataBaseConnection.php';
 $databaseConnection = new DataBaseConnection();
 $connection = $databaseConnection->getConnection();
 if (isset($_POST["deleteLastScan"])) {
-    $sql = "DELETE FROM last_scanned";
+    $sql = "DELETE FROM notes";
     $connection->exec($sql);
 }
 
-$sql = "SELECT * FROM last_scanned";
+$sql = "SELECT * FROM notes";
 try {
     $result = $connection->query($sql)->fetchAll();
 } catch (\PDOException $e) {
