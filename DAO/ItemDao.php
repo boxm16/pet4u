@@ -113,9 +113,6 @@ class ItemDao {
                 $item->setDescription($description);
                 $item->setPosition("POSITION:" . $position);
                 $item->addAltercode($altercode);
-                if ((strlen($altercode) == 8 || strlen($altercode) == 9) && substr($altercode, -5, 1) == ".") {
-                   $item->setSiteCode($altercode) ;
-                }
             }
         }
         return $item;
@@ -139,6 +136,7 @@ class ItemDao {
             $itemId = $itemData["id"];
             $description = $itemData["description"];
             $position = $itemData["position"];
+            $sales = $itemData["sale_speed"];
 
             //   $itemBarcode = $itemData["item_barcode"];
             // $itemCode = $itemData["item_code"];
@@ -150,8 +148,46 @@ class ItemDao {
                 $item->setId($itemId);
                 $item->setDescription($description);
                 $item->setPosition($position);
-                //     $item->addCode($itemCode);
-                //   $item->addBarcode($itemBarcode);
+                $item->setSales($sales);
+
+                $items[$itemId] = $item;
+            }
+        }
+
+        return $items;
+    }
+
+    public function getAllItemsBySales() {
+        $items = array();
+        $sql = "SELECT * FROM item  ORDER BY item.sale_speed DESC";
+
+        try {
+            $result = $this->connection->query($sql)->fetchAll();
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+            exit;
+        }
+
+        foreach ($result as $itemData) {
+
+
+            $itemId = $itemData["id"];
+            $description = $itemData["description"];
+            $position = $itemData["position"];
+            $sales = $itemData["sale_speed"];
+            //   $itemBarcode = $itemData["item_barcode"];
+            // $itemCode = $itemData["item_code"];
+            // $boxBarcode = $itemData["box_barcode"];
+            //  $itemsInBox = $itemData["item_quantity"];
+
+            if (!array_key_exists($itemId, $items)) {
+                $item = new Item();
+                $item->setId($itemId);
+                $item->setDescription($description);
+                $item->setPosition($position);
+                $item->setSales($sales);
+
 
                 $items[$itemId] = $item;
             }

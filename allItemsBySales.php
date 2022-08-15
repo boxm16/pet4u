@@ -1,7 +1,7 @@
 <?php
 require_once 'Controller/ItemController.php';
 $itemController = new ItemController();
-$allItems = $itemController->getAllPositions();
+$allItems = $itemController->getAllItemsBySales();
 ?>
 <!DOCTYPE html>
 

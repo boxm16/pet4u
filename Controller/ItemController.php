@@ -36,9 +36,13 @@ class ItemController {
     public function getItemFromBarcode($barcode) {
         return $this->itemDao->getItemFromBarcode($barcode);
     }
-    
-    public function getAllPositions(){
-      return $this->itemDao->getAllPositions();  
+
+    public function getAllPositions() {
+        return $this->itemDao->getAllPositions();
+    }
+
+    public function getAllItemsBySales() {
+       return $this->itemDao->getAllItemsBySales(); 
     }
 
 }

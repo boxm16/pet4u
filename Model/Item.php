@@ -7,6 +7,7 @@ class Item {
     private $altercodes;
     private $position;
     private $siteCode;
+    private $sales;
 
     function __construct() {
 
@@ -60,5 +61,13 @@ class Item {
         public function addAltercode($altercode) {
         array_push($this->altercodes, $altercode);
     }
+    function getSales() {
+        return $this->sales;
+    }
+
+    function setSales($sales): void {
+        $this->sales = $sales;
+    }
+
 
 }
