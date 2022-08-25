@@ -19,6 +19,8 @@ class TechManDao {
   `position` VARCHAR(25) NULL,
   `status` VARCHAR(100) NULL,
   `sale_speed` VARCHAR(100) NULL,
+  `measure_unit` VARCHAR(10) NULL,
+  `coeficient` VARCHAR(10) NULL,
    PRIMARY KEY (`id`))
    ENGINE = InnoDB
    DEFAULT CHARACTER SET = utf8;
