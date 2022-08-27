@@ -27,6 +27,7 @@ $allItems = $itemController->getAllPositions();
                     <th>POSITION</th>
                     <th>DESCRIPTION</th>
                     <th>SALE`S RATE</th>
+                     <th>SALE`S RATE GRAPHICAL</th>
                 </tr>
             </thead>
             <?php
@@ -38,6 +39,7 @@ $allItems = $itemController->getAllPositions();
                 $sales = $item->getSales();
                 echo "<td>" . $position . "</td>"
                 . "<td>" . $description . "</td>"
+                . "<td>" . $sales . "</td>"
                 . "<td>"
                 . "<svg width='$sales' height='30'>"
                 . " <rect width='$sales' height='30' style='fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)' />"
