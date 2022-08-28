@@ -27,8 +27,10 @@ $allItems = $itemController->getSalesByPositions();
                     <th>CODE</th>
                     <th>POSITION</th>
                     <th>DESCRIPTION</th>
-                    <th>SALE`S RATE</th>
-                    <th>SALE`S RATE GRAPHICAL</th>
+                    <th>MEASURE<br> UNIT</th>
+
+                    <th>SALES </th>
+                    <th>SALES GRAPHICAL</th>
                 </tr>
             </thead>
             <?php
@@ -39,9 +41,11 @@ $allItems = $itemController->getSalesByPositions();
                 $description = $item->getDescription();
                 $siteCode = $item->getSiteCode();
                 $sales = $item->getSales();
+                $measureUnit = $item->getMeasureUnit();
                 echo "<td>" . $code . "</td>"
                 . "<td>" . $position . "</td>"
                 . "<td>" . $description . "</td>"
+                . "<td>" . $measureUnit . "</td>"
                 . "<td>" . $sales . "</td>"
                 . "<td>"
                 . "<svg width='$sales' height='30'>"

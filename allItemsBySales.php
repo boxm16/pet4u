@@ -23,21 +23,30 @@ $allItems = $itemController->getAllItemsBySales();
         <hr>
         <table>
             <thead>
-                <tr>
+                <tr> 
+                    <th>CODE</th>
                     <th>POSITION</th>
                     <th>DESCRIPTION</th>
-                    <th>SALE`S RATE</th>
+                    <th>MEASURE<br> UNIT</th>
+
+                    <th>SALES </th>
+                    <th>SALES GRAPHICAL</th>
                 </tr>
             </thead>
             <?php
             foreach ($allItems as $item) {
                 echo "<tr>";
+                $code = $item->getCode();
                 $position = $item->getPosition();
                 $description = $item->getDescription();
                 $siteCode = $item->getSiteCode();
                 $sales = $item->getSales();
-                echo "<td>" . $position . "</td>"
+                $measureUnit = $item->getMeasureUnit();
+                echo "<td>" . $code . "</td>"
+                . "<td>" . $position . "</td>"
                 . "<td>" . $description . "</td>"
+                . "<td>" . $measureUnit . "</td>"
+                . "<td>" . $sales . "</td>"
                 . "<td>"
                 . "<svg width='$sales' height='30'>"
                 . " <rect width='$sales' height='30' style='fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)' />"

@@ -158,8 +158,9 @@ class ItemDao {
     }
 
     public function getAllItemsBySales() {
+
         $items = array();
-        $sql = "SELECT * FROM item  ORDER BY item.sale_speed DESC";
+        $sql = "SELECT * FROM sales  ORDER BY quantity DESC ";
 
         try {
             $result = $this->connection->query($sql)->fetchAll();
@@ -171,27 +172,19 @@ class ItemDao {
 
         foreach ($result as $itemData) {
 
-
-            $itemId = $itemData["id"];
-            $description = $itemData["description"];
-            $position = $itemData["position"];
-            $sales = $itemData["sale_speed"];
-            //   $itemBarcode = $itemData["item_barcode"];
-            // $itemCode = $itemData["item_code"];
-            // $boxBarcode = $itemData["box_barcode"];
-            //  $itemsInBox = $itemData["item_quantity"];
-
-            if (!array_key_exists($itemId, $items)) {
-                $item = new Item();
-                $item->setId($itemId);
-                $item->setDescription($description);
-                $item->setPosition($position);
-                $item->setSales($sales);
+            $item = new Item();
+            $item->setCode($itemData["code"]);
+            $item->setDescription($itemData["description"]);
+            $item->setPosition($itemData["position"]);
+            $item->setMeasureUnit($itemData["measure_unit"]);
+            $item->setSales($itemData["quantity"]);
+            $item->setCoeficient($itemData["coeficient"]);
 
 
-                $items[$itemId] = $item;
-            }
+            array_push($items, $item);
         }
+
+
 
         return $items;
     }

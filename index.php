@@ -1,4 +1,5 @@
 <?php
+
 require_once 'Controller/TechManController.php';
 
 echo "<h1>";
@@ -19,7 +20,7 @@ echo "<a href='afmBarcode.php' target='_blank'>AFM BARCODE</a>";
 //echo "<a href='allPositions.php' target='_blank'>SHOW ALL ITEMS BY POSITION</a>";
 echo "<br>";
 echo "<a href='salesByPosition.php' target='_blank'>SHOW SALES BY POSITION</a>";
-//echo "<br>";
-//echo "<a href='allItemsBySales.php' target='_blank'>SHOW ALL ITEMS BY SALE</a>";
+echo "<br>";
+echo "<a href='allItemsBySales.php' target='_blank'>SHOW ALL ITEMS BY SALE</a>";
 echo "</h1>";
 ?>
