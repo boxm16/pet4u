@@ -3,11 +3,15 @@
 class Item {
 
     private $id;
+    private $code;
     private $description;
     private $altercodes;
     private $position;
     private $siteCode;
     private $sales;
+    private $measureUnit;
+    private $quantity;
+    private $coeficient;
 
     function __construct() {
 
@@ -21,8 +25,6 @@ class Item {
     function getDescription() {
         return $this->description;
     }
-
-   
 
     function getPosition() {
         return $this->position;
@@ -40,8 +42,6 @@ class Item {
         $this->description = $description;
     }
 
-    
-
     function setPosition($position): void {
         $this->position = $position;
     }
@@ -58,9 +58,10 @@ class Item {
         $this->altercodes = $altercodes;
     }
 
-        public function addAltercode($altercode) {
+    public function addAltercode($altercode) {
         array_push($this->altercodes, $altercode);
     }
+
     function getSales() {
         return $this->sales;
     }
@@ -68,6 +69,38 @@ class Item {
     function setSales($sales): void {
         $this->sales = $sales;
     }
+    function getCode() {
+        return $this->code;
+    }
+
+    function getMeasureUnit() {
+        return $this->measureUnit;
+    }
+
+    function getQuantity() {
+        return $this->quantity;
+    }
+
+    function getCoeficient() {
+        return $this->coeficient;
+    }
+
+    function setCode($code): void {
+        $this->code = $code;
+    }
+
+    function setMeasureUnit($measureUnit): void {
+        $this->measureUnit = $measureUnit;
+    }
+
+    function setQuantity($quantity): void {
+        $this->quantity = $quantity;
+    }
+
+    function setCoeficient($coeficient): void {
+        $this->coeficient = $coeficient;
+    }
+
 
 
 }

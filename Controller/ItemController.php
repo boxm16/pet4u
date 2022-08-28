@@ -44,5 +44,10 @@ class ItemController {
     public function getAllItemsBySales() {
        return $this->itemDao->getAllItemsBySales(); 
     }
+    
+    public function getSalesByPositions(){
+         return $this->itemDao->getSalesByPositions(); 
+        
+    }
 
 }

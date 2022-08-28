@@ -15,9 +15,11 @@ echo "<br>";
 echo "<a href='lastScanned.php'>LAST SCANNED BARCODES</a>";
 echo "<br>";
 echo "<a href='afmBarcode.php' target='_blank'>AFM BARCODE</a>";
+//echo "<br>";
+//echo "<a href='allPositions.php' target='_blank'>SHOW ALL ITEMS BY POSITION</a>";
 echo "<br>";
-echo "<a href='allPositions.php' target='_blank'>SHOW ALL ITEMS BY POSITION</a>";
-echo "<br>";
-echo "<a href='allItemsBySales.php' target='_blank'>SHOW ALL ITEMS BY SALE</a>";
+echo "<a href='salesByPosition.php' target='_blank'>SHOW SALES BY POSITION</a>";
+//echo "<br>";
+//echo "<a href='allItemsBySales.php' target='_blank'>SHOW ALL ITEMS BY SALE</a>";
 echo "</h1>";
 ?>

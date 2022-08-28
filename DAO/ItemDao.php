@@ -208,4 +208,33 @@ class ItemDao {
         return "success";
     }
 
+    public function getSalesByPositions() {
+        $items = array();
+        $sql = "SELECT * FROM sales  ORDER BY position ";
+
+        try {
+            $result = $this->connection->query($sql)->fetchAll();
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+            exit;
+        }
+
+        foreach ($result as $itemData) {
+
+            $item = new Item();
+            $item->setCode($itemData["code"]);
+            $item->setDescription($itemData["description"]);
+            $item->setPosition($itemData["position"]);
+            $item->setMeasureUnit($itemData["measure_unit"]);
+            $item->setSales($itemData["quantity"]);
+            $item->setCoeficient($itemData["coeficient"]);
+
+
+            array_push($items, $item);
+        }
+
+        return $items;
+    }
+
 }
