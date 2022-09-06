@@ -27,9 +27,13 @@ $allItems = $itemController->getSalesByPositions();
                     <th>CODE</th>
                     <th>POSITION</th>
                     <th>DESCRIPTION</th>
-                    <th>MEASURE<br> UNIT</th>
+                    <th>M.U.<br> UNIT</th>
+                    <th>COEF.</th>
+                    <th>Eshop <br> Sales </th>
+                    <th>Shop <br>Supply </th>
+                    <th>Total<br> Sales </th>
+                    <th>Total<br> Sales In <br>Pieces </th>
 
-                    <th>SALES </th>
                     <th>SALES GRAPHICAL</th>
                 </tr>
             </thead>
@@ -39,17 +43,26 @@ $allItems = $itemController->getSalesByPositions();
                 $code = $item->getCode();
                 $position = $item->getPosition();
                 $description = $item->getDescription();
-                $siteCode = $item->getSiteCode();
-                $sales = $item->getSales();
+
                 $measureUnit = $item->getMeasureUnit();
+                $coeficient = $item->getCoeficient();
+                $eShopSales = $item->getEshopSales();
+                $shopsSupply = $item->getShopsSupply();
+                $totalSales = $item->getTotalSales();
+                $totalSalesInPieces = $item->getTotalSalesInPieces();
+
                 echo "<td>" . $code . "</td>"
                 . "<td>" . $position . "</td>"
                 . "<td>" . $description . "</td>"
                 . "<td>" . $measureUnit . "</td>"
-                . "<td>" . $sales . "</td>"
+                . "<td>" . $coeficient . "</td>"
+                . "<td>" . $eShopSales . "</td>"
+                . "<td>" . $shopsSupply . "</td>"
+                . "<td>" . $totalSales . "</td>"
+                . "<td>" . $totalSalesInPieces . "</td>"
                 . "<td>"
-                . "<svg width='$sales' height='30'>"
-                . " <rect width='$sales' height='30' style='fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)' />"
+                . "<svg width='$totalSalesInPieces' height='30'>"
+                . " <rect width='$totalSalesInPieces' height='30' style='fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)' />"
                 . "</svg>"
                 . "</td > ";
                 echo "</tr>";

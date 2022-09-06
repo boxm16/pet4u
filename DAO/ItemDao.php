@@ -157,10 +157,10 @@ class ItemDao {
         return $items;
     }
 
-    public function getAllItemsBySales() {
+    public function getAllSales() {
 
         $items = array();
-        $sql = "SELECT * FROM sales  ORDER BY quantity DESC ";
+        $sql = "SELECT * FROM sales";
 
         try {
             $result = $this->connection->query($sql)->fetchAll();
@@ -175,13 +175,14 @@ class ItemDao {
             $item = new Item();
             $item->setCode($itemData["code"]);
             $item->setDescription($itemData["description"]);
-            $item->setPosition($itemData["position"]);
             $item->setMeasureUnit($itemData["measure_unit"]);
-            $item->setSales($itemData["quantity"]);
+            $item->setEshopSales($itemData["eshop_sales"]);
+            $item->setShopsSupply($itemData["shops_supply"]);
+            $item->setTotalSales($itemData["total_sales"]);
             $item->setCoeficient($itemData["coeficient"]);
+            $item->setTotalSalesInPieces($itemData["total_sales_in_pieces"]);
 
-
-            array_push($items, $item);
+            $items[$itemData["code"]] = $item;
         }
 
 
@@ -203,7 +204,7 @@ class ItemDao {
 
     public function getSalesByPositions() {
         $items = array();
-        $sql = "SELECT * FROM sales  ORDER BY position ";
+        $sql = "SELECT * FROM sales ";
 
         try {
             $result = $this->connection->query($sql)->fetchAll();
@@ -218,13 +219,53 @@ class ItemDao {
             $item = new Item();
             $item->setCode($itemData["code"]);
             $item->setDescription($itemData["description"]);
-            $item->setPosition($itemData["position"]);
+
             $item->setMeasureUnit($itemData["measure_unit"]);
             $item->setSales($itemData["quantity"]);
             $item->setCoeficient($itemData["coeficient"]);
 
 
             array_push($items, $item);
+        }
+
+        return $items;
+    }
+
+    public function getAllItemsByPositions() {
+        $items = array();
+        $sql = "SELECT * FROM item "
+                . "INNER JOIN altercodes ON item.id=altercodes.item_id  ORDER BY position";
+
+        try {
+            $result = $this->connection->query($sql)->fetchAll();
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+            exit;
+        }
+
+        foreach ($result as $itemData) {
+
+
+            $itemId = $itemData["id"];
+            $description = $itemData["description"];
+            $position = $itemData["position"];
+
+            $altercode = $itemData["item_altercode"];
+
+            if (!array_key_exists($itemId, $items)) {
+                $item = new Item();
+                $item->setId($itemId);
+                $item->setDescription($description);
+                $item->setPosition($position);
+                $item->addAltercode($altercode);
+
+                $items[$itemId] = $item;
+            } else {
+                $item = $items[$itemId];
+                $item->addAltercode($altercode);
+                $items[$itemId] = $item;
+            }
         }
 
         return $items;

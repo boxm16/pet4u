@@ -42,12 +42,37 @@ class ItemController {
     }
 
     public function getAllItemsBySales() {
-       return $this->itemDao->getAllItemsBySales(); 
+        $items = $this->itemDao->getAllItems();
+
+        return $this->itemDao->getAllSales();
     }
-    
-    public function getSalesByPositions(){
-         return $this->itemDao->getSalesByPositions(); 
-        
+
+    public function getSalesByPositions() {
+        $itemsWithSales = $this->itemDao->getAllSales();
+        $itemsWithPositions = $this->itemDao->getAllItemsByPositions();
+        foreach ($itemsWithPositions as $itemWithPosition) {
+            $id = $itemWithPosition->getId();
+            $altercodes = $itemWithPosition->getAltercodes();
+            foreach ($altercodes as $altercode) {
+                if (array_key_exists($altercode, $itemsWithSales)) {
+
+                    $itemWithSales = $itemsWithSales[$altercode];
+
+                    $itemWithPosition->setEshopSales($itemWithSales->getEshopSales());
+                    $itemWithPosition->setShopsSupply($itemWithSales->getShopsSupply());
+                    $itemWithPosition->setCoeficient($itemWithSales->getCoeficient());
+
+                    $itemWithPosition->setTotalSales($itemWithSales->getTotalSales());
+                    $itemWithPosition->setMeasureUnit($itemWithSales->getMeasureUnit());
+                    $itemWithPosition->setTotalSalesInPieces($itemWithSales->getTotalSalesInPieces());
+                    $itemsWithPositions[$id] = $itemWithPosition;
+                } else {
+                    //  echo "Code:$altercode dont Exist";
+                    //  echo "<br>";
+                }
+            }
+        }
+        return $itemsWithPositions;
     }
 
 }
