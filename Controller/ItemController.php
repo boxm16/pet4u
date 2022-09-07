@@ -57,7 +57,7 @@ class ItemController {
                 if (array_key_exists($altercode, $itemsWithSales)) {
 
                     $itemWithSales = $itemsWithSales[$altercode];
-                    
+
                     $itemWithPosition->setCode($itemWithSales->getCode());
 
                     $itemWithPosition->setEshopSales($itemWithSales->getEshopSales());
@@ -75,6 +75,28 @@ class ItemController {
             }
         }
         return $itemsWithPositions;
+    }
+
+    public function getItemSaleFromBarcode($barcode) {
+        $itemWithPosition = $this->itemDao->getItemFromBarcode($barcode);
+        $allSales = $this->itemDao->getAllSales();
+        $altercodes = $itemWithPosition->getAltercodes();
+        foreach ($altercodes as $altercode) {
+            if (key_exists($altercode, $allSales)) {
+                $itemWithSales = $allSales[$altercode];
+
+                $itemWithPosition->setCode($itemWithSales->getCode());
+
+                $itemWithPosition->setEshopSales($itemWithSales->getEshopSales());
+                $itemWithPosition->setShopsSupply($itemWithSales->getShopsSupply());
+                $itemWithPosition->setCoeficient($itemWithSales->getCoeficient());
+
+                $itemWithPosition->setTotalSales($itemWithSales->getTotalSales());
+                $itemWithPosition->setMeasureUnit($itemWithSales->getMeasureUnit());
+                $itemWithPosition->setTotalSalesInPieces($itemWithSales->getTotalSalesInPieces());
+            }
+        }
+        return $itemWithPosition;
     }
 
 }

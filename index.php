@@ -22,5 +22,7 @@ echo "<br>";
 echo "<a href='salesByPosition.php' target='_blank'>SHOW SALES BY POSITION</a>";
 echo "<br>";
 echo "<a href='allItemsBySales.php' target='_blank'>SHOW ALL ITEMS BY SALE</a>";
+echo "<br>";
+echo "<a href='salesFinder.php'>Find Item Sales</a>";
 echo "</h1>";
 ?>
