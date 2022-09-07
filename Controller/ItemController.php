@@ -57,6 +57,8 @@ class ItemController {
                 if (array_key_exists($altercode, $itemsWithSales)) {
 
                     $itemWithSales = $itemsWithSales[$altercode];
+                    
+                    $itemWithPosition->setCode($itemWithSales->getCode());
 
                     $itemWithPosition->setEshopSales($itemWithSales->getEshopSales());
                     $itemWithPosition->setShopsSupply($itemWithSales->getShopsSupply());
