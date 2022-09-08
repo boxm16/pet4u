@@ -26,7 +26,7 @@ echo "<br>";
 echo "$position";
 echo "<br>";
 echo "-----------------";
-echo "<h3>";
+echo "<br>";
 echo "Sales:$salesInPieces";
 echo "<br>";
 echo "-----------------";
@@ -38,4 +38,4 @@ echo "<br>";
 echo "Total Sales:$totalSalesInPieces";
 echo "<br>";
 echo "-----------------";
-echo "</h3>";
+
