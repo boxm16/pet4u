@@ -67,6 +67,7 @@ class ItemController {
                     $itemWithPosition->setTotalSales($itemWithSales->getTotalSales());
                     $itemWithPosition->setMeasureUnit($itemWithSales->getMeasureUnit());
                     $itemWithPosition->setTotalSalesInPieces($itemWithSales->getTotalSalesInPieces());
+                    $itemWithPosition->setIsComplex($itemWithSales->getIsComplex());
                     $itemsWithPositions[$id] = $itemWithPosition;
                 } else {
                     //  echo "Code:$altercode dont Exist";

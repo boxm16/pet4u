@@ -181,7 +181,8 @@ class ItemDao {
             $item->setTotalSales($itemData["total_sales"]);
             $item->setCoeficient($itemData["coeficient"]);
             $item->setTotalSalesInPieces($itemData["total_sales_in_pieces"]);
-
+            $item->setIsComplex($itemData["is_complex"]);
+           
             $items[$itemData["code"]] = $item;
         }
 
@@ -224,10 +225,8 @@ class ItemDao {
             $item->setSales($itemData["quantity"]);
             $item->setCoeficient($itemData["coeficient"]);
 
-
             array_push($items, $item);
         }
-
         return $items;
     }
 

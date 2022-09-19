@@ -39,7 +39,13 @@ $allItems = $itemController->getSalesByPositions();
             </thead>
             <?php
             foreach ($allItems as $item) {
-                echo "<tr>";
+                $isComplex = $item->getIsComplex();
+                if ($isComplex =='1') {
+                    echo " <tr style='background-color:#FF0000'>";
+                } else {
+                    echo "<tr>";
+                }
+
                 $code = $item->getCode();
                 $position = $item->getPosition();
                 $description = $item->getDescription();
@@ -51,6 +57,8 @@ $allItems = $itemController->getSalesByPositions();
                 $totalSales = $item->getTotalSales();
                 $totalSalesInPieces = $item->getTotalSalesInPieces();
 
+
+
                 echo "<td>" . $code . "</td>"
                 . "<td>" . $position . "</td>"
                 . "<td>" . $description . "</td>"
@@ -60,6 +68,7 @@ $allItems = $itemController->getSalesByPositions();
                 . "<td>" . $shopsSupply . "</td>"
                 . "<td>" . $totalSales . "</td>"
                 . "<td>" . $totalSalesInPieces . "</td>"
+                . "<td>" . $isComplex . "</td>"
                 . "<td>"
                 . "<svg width='$totalSalesInPieces' height='30'>"
                 . " <rect width='$totalSalesInPieces' height='30' style='fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)' />"

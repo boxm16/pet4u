@@ -14,6 +14,7 @@ class Item {
     private $coeficient;
     private $totalSalesInPieces;
     private $measureUnit;
+    private $isComplex;
 
     function __construct() {
 
@@ -119,5 +120,17 @@ class Item {
     function setMeasureUnit($measureUnit): void {
         $this->measureUnit = $measureUnit;
     }
+    
+  
+
+    function getIsComplex() {
+        return $this->isComplex;
+    }
+
+    function setIsComplex($isComplex): void {
+        $this->isComplex = $isComplex;
+    }
+
+
 
 }
