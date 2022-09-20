@@ -27,12 +27,12 @@ $allItems = $itemController->getSalesByPositions();
                     <th>CODE</th>
                     <th>POSITION</th>
                     <th>DESCRIPTION</th>
-                    <th>M.U.<br> UNIT</th>
-                    <th>COEF.</th>
+                 <!--  <th>M.U.<br> UNIT</th> -->
+                  <!--     <th>COEF.</th>-->
                     <th>Eshop <br> Sales </th>
                     <th>Shop <br>Supply </th>
                     <th>Total<br> Sales </th>
-                    <th>Total<br> Sales In <br>Pieces </th>
+                  <!--     <th>Total<br> Sales In <br>Pieces </th>-->
 
                     <th>SALES GRAPHICAL</th>
                 </tr>
@@ -40,8 +40,8 @@ $allItems = $itemController->getSalesByPositions();
             <?php
             foreach ($allItems as $item) {
                 $isComplex = $item->getIsComplex();
-                if ($isComplex =='1') {
-                    echo " <tr style='background-color:#FF0000'>";
+                if ($isComplex == '1') {
+                    echo " <tr style='background-color:lime'>";
                 } else {
                     echo "<tr>";
                 }
@@ -56,19 +56,22 @@ $allItems = $itemController->getSalesByPositions();
                 $shopsSupply = $item->getShopsSupply();
                 $totalSales = $item->getTotalSales();
                 $totalSalesInPieces = $item->getTotalSalesInPieces();
-
+                if ($coeficient != 0) {
+                    $eShopSales = $eShopSales / $coeficient;
+                    $shopsSupply = $shopsSupply / $coeficient;
+                }
 
 
                 echo "<td>" . $code . "</td>"
                 . "<td>" . $position . "</td>"
                 . "<td>" . $description . "</td>"
-                . "<td>" . $measureUnit . "</td>"
-                . "<td>" . $coeficient . "</td>"
+                // . "<td>" . $measureUnit . "</td>"
+                //. "<td>" . $coeficient . "</td>"
                 . "<td>" . $eShopSales . "</td>"
                 . "<td>" . $shopsSupply . "</td>"
-                . "<td>" . $totalSales . "</td>"
+                // . "<td>" . $totalSales . "</td>"
                 . "<td>" . $totalSalesInPieces . "</td>"
-                . "<td>" . $isComplex . "</td>"
+                // . "<td>" . $isComplex . "</td>"
                 . "<td>"
                 . "<svg width='$totalSalesInPieces' height='30'>"
                 . " <rect width='$totalSalesInPieces' height='30' style='fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)' />"
