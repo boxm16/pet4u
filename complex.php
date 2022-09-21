@@ -1,7 +1,41 @@
 <?php
-require_once 'Controller/ItemController.php';
-$itemController = new ItemController();
-$allItems = $itemController->getSalesByPositions();
+require_once 'DAO/DataBaseConnection.php';
+require_once 'Model/Item.php';
+$databaseConnection = new DataBaseConnection();
+$connection = $databaseConnection->getConnection();
+$masterCode = $_GET["master_code"];
+$items = getAllItems($connection, $masterCode);
+
+function getAllItems($connection, $masterCode) {
+
+    $items = array();
+    $sql = "SELECT * FROM complex WHERE master_code=$masterCode";
+
+    try {
+        $result = $connection->query($sql)->fetchAll();
+    } catch (\PDOException $e) {
+        echo $e->getMessage() . " Error Code:";
+        echo $e->getCode() . "<br>";
+        exit;
+    }
+
+    foreach ($result as $itemData) {
+
+        $item = new Item();
+        $item->setCode($itemData["slave_code"]);
+        $item->setDescription($itemData["description"]);
+        $item->setMeasureUnit($itemData["measure_unit"]);
+        $item->setEshopSales($itemData["eshop_sales"]);
+        $item->setShopsSupply($itemData["shops_supply"]);
+        $item->setTotalSales($itemData["total_sales"]);
+        $item->setCoeficient($itemData["coeficient"]);
+        $item->setTotalSalesInPieces($itemData["total_sales_in_pieces"]);
+
+
+        array_push($items, $item);
+    }
+    return $items;
+}
 ?>
 <!DOCTYPE html>
 
@@ -19,13 +53,10 @@ $allItems = $itemController->getSalesByPositions();
         </style>
     </head>
     <body>
-        <a href="index.php">Go Index</a>
-        <hr>
         <table>
             <thead>
                 <tr> 
                     <th>CODE</th>
-                    <th>POSITION</th>
                     <th>DESCRIPTION</th>
                  <!--  <th>M.U.<br> UNIT</th> -->
                   <!--     <th>COEF.</th>-->
@@ -38,7 +69,7 @@ $allItems = $itemController->getSalesByPositions();
                 </tr>
             </thead>
             <?php
-            foreach ($allItems as $item) {
+            foreach ($items as $item) {
                 $isComplex = $item->getIsComplex();
                 if ($isComplex == '1') {
                     echo " <tr style='background-color:lime'>";
@@ -63,21 +94,20 @@ $allItems = $itemController->getSalesByPositions();
 
 
                 echo "<td>" . $code . "</td>"
-                . "<td>" . $position . "</td>"
+              //  . "<td>" . $position . "</td>"
                 . "<td>" . $description . "</td>"
                 // . "<td>" . $measureUnit . "</td>"
                 //. "<td>" . $coeficient . "</td>"
                 . "<td>" . $eShopSales . "</td>"
                 . "<td>" . $shopsSupply . "</td>";
                 // . "<td>" . $totalSales . "</td>"
-                                if ($isComplex == '1') {
-                   echo "<td><a href='complex.php?master_code=$code' target='_blank'>" . $totalSalesInPieces . "</a></td>";
-               
+                if ($isComplex == '1') {
+                    echo "<td><a href='complex.php?master_code=$code' target='_blank'>" . $totalSalesInPieces . "</a></td>";
                 } else {
-                   echo "<td>" . $totalSalesInPieces . "</td>";
+                    echo "<td>" . $totalSalesInPieces . "</td>";
                 }
                 // . "<td>" . $isComplex . "</td>"
-             echo "<td>"
+                echo "<td>"
                 . "<svg width='$totalSalesInPieces' height='30'>"
                 . " <rect width='$totalSalesInPieces' height='30' style='fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)' />"
                 . "</svg>"

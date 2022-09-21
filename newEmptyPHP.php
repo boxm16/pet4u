@@ -1,7 +1,7 @@
 <?php
 
 require_once 'DAO/DataBaseConnection.php';
-echo "lapa";
+
 
 $databaseConnection = new DataBaseConnection();
 $connection = $databaseConnection->getConnection();
