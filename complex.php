@@ -9,7 +9,7 @@ $items = getAllItems($connection, $masterCode);
 function getAllItems($connection, $masterCode) {
 
     $items = array();
-    $sql = "SELECT * FROM complex WHERE master_code=$masterCode";
+    $sql = "SELECT * FROM complex WHERE master_code='$masterCode'";
 
     try {
         $result = $connection->query($sql)->fetchAll();
