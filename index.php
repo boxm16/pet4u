@@ -24,5 +24,7 @@ echo "<br>";
 echo "<a href='allItemsBySales.php' target='_blank'>SHOW ALL ITEMS BY SALE</a>";
 echo "<br>";
 echo "<a href='salesFinder.php'>Find Item Sales</a>";
+echo "<br>";
+echo "<a href='massScan.php'>Mass Scan</a>";
 echo "</h1>";
 ?>
