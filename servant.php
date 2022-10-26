@@ -1,5 +1,5 @@
 <?php
-
+echo "ladoga";exit;
 require_once 'Controller/ItemController.php';
 $itemController = new ItemController();
 $barcode = $_POST["barcode"];
