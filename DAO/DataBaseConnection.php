@@ -7,13 +7,19 @@ class DataBaseConnection {
     private $pass;
 
     function __construct() {
-        $this->db = 'h0u4Z7iqi8';
-        $this->user = 'h0u4Z7iqi8';
-        $this->pass = 'Z5dTwqvCQd';
+        // $this->db = 'h0u4Z7iqi8';
+        //  $this->user = 'h0u4Z7iqi8';
+        //  $this->pass = 'Z5dTwqvCQd';
+
+        $this->db = 'sitmalidi_db';
+        $this->user = 'sitmalidi_ admin';
+        $this->pass = 'athina2004ELENA';
     }
 
     public function getConnection() {
-        $host = 'remotemysql.com';
+        // $host = 'remotemysql.com';
+
+        $host = 'localhost:3306';
         $db = $this->db;
         $user = $this->user;
         $pass = $this->pass;
