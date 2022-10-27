@@ -1,6 +1,8 @@
 <?php
 
 $barcode = $_POST["barcode"];
+
+/*
 // create curl resource
 $ch = curl_init();
 
@@ -17,6 +19,7 @@ $output = curl_exec($ch);
 curl_close($ch);
 echo $output;
 exit;
+*/
 
 
 
