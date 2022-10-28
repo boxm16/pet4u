@@ -83,7 +83,7 @@ class ItemDao {
 
 
         $sql = "SELECT * FROM item "
-                . "INNER JOIN altercodes ON item.id=altercodes.item_id "
+                . "INNER JOIN altercode ON item.id=altercode.item_id "
                 . "WHERE id='$id'";
 
 
