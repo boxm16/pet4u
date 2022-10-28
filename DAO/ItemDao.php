@@ -70,7 +70,7 @@ class ItemDao {
         }
         //----------------------------------------------------------
         //get id
-        $idSql = "SELECT item_id FROM altercodes WHERE  item_altercode='$barcode'";
+        $idSql = "SELECT item_id FROM altercode WHERE  item_altercode='$barcode'";
         try {
             $result = $this->connection->query($idSql)->fetch();
         } catch (\PDOException $e) {

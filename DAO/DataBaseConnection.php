@@ -13,7 +13,7 @@ class DataBaseConnection {
 
 
         $this->db = 'sitmalidi_db';
-        $this->user = 'sitmalidi_ admin';
+        $this->user = 'sitmalidi_admin';
         $this->pass = 'athina2004ELENA';
     }
 
