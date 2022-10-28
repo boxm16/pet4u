@@ -233,7 +233,7 @@ class ItemDao {
     public function getAllItemsByPositions() {
         $items = array();
         $sql = "SELECT * FROM item "
-                . "INNER JOIN altercodes ON item.id=altercodes.item_id  ORDER BY position";
+                . "INNER JOIN altercode ON item.id=altercode.item_id  ORDER BY position";
 
         try {
             $result = $this->connection->query($sql)->fetchAll();
@@ -250,7 +250,7 @@ class ItemDao {
             $description = $itemData["description"];
             $position = $itemData["position"];
 
-            $altercode = $itemData["item_altercode"];
+            $altercode = $itemData["altercode"];
 
             if (!array_key_exists($itemId, $items)) {
                 $item = new Item();
