@@ -32,7 +32,7 @@ class UploadDao {
 
         try {
             $this->connection->beginTransaction();
-            
+
             $stm = $this->connection->query("DELETE FROM item");
             $stm->execute();
 
@@ -51,6 +51,38 @@ class UploadDao {
 
             $this->connection->commit();
             echo "ALtercodes inserted successfully into database" . "<br>";
+        } catch (\PDOException $e) {
+            echo $e->getMessage() . " Error Code:";
+            echo $e->getCode() . "<br>";
+        }
+    }
+
+    public function insertUploadedSalesData($itemsFromExcelFile) {
+        $insertDataItem = array();
+        foreach ($itemsFromExcelFile as $item) {
+
+            $insertRow = array($item->getCode(),
+                $item->getDescription(),
+                $item->getMeasureUnit(),
+                $item->getEshopSales(),
+                $item->getShopsSupply(),
+                $item->getTotalSales(),
+                $item->getCoeficient(),
+                $item->getTotalSalesInPieces());
+            array_push($insertDataItem, $insertRow);
+        }
+        try {
+            $this->connection->beginTransaction();
+
+            $chunks = array_chunk($insertDataItem, 2000);
+
+            foreach ($chunks as $chunk) {
+                $stmt = $this->connection->multiPrepare('INSERT INTO sales (code, description, measure_unit, eshop_sales, shops_supply, total_sales, coeficient, total_sales_in_pieces)', $insertDataItem);
+                $stmt->multiExecute($insertDataItem);
+            }
+
+            $this->connection->commit();
+            echo "Sales inserted successfully into database" . "<br>";
         } catch (\PDOException $e) {
             echo $e->getMessage() . " Error Code:";
             echo $e->getCode() . "<br>";

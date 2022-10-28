@@ -24,4 +24,12 @@ class UploadController {
         return $itemsFromExcelFile;
     }
 
+    public function saveUploadedSalesDataIntoDatabase() {
+
+        $itemsFromExcelFile = $this->excelReader->readSales();
+
+        $this->uploadDao->insertUploadedSalesData($itemsFromExcelFile);
+        return $itemsFromExcelFile;
+    }
+
 }
