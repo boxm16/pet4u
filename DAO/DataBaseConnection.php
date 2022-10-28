@@ -11,9 +11,15 @@ class DataBaseConnection {
         //  $this->user = 'h0u4Z7iqi8';
         //  $this->pass = 'Z5dTwqvCQd';
 
+        
         $this->db = 'sitmalidi_db';
         $this->user = 'sitmalidi_ admin';
         $this->pass = 'athina2004ELENA';
+        
+        $this->db = 'pet4u_db';
+        $this->user = 'root';
+        $this->pass = 'athina2004';
+        
     }
 
     public function getConnection() {

@@ -5,18 +5,21 @@ require_once "SimpleXLSX.php";
 class ExcelReader {
 
     public function readItems() {
+
         $excelRows = $this->readExcelFile();
+
         $items = $this->getItemsFromExcelRows($excelRows); //array of items
         return $items;
     }
 
     private function readExcelFile() {
-        if ($xlsx = SimpleXLSX::parse("uploads/itemsExcelFile" . ".xlsx")) {
+        if ($xlsx = SimpleXLSX::parse("uploads/uploadedExcelFile" . ".xlsx")) {
             $rows = $xlsx->rowsEx();
         } else {
-            header("Location:excelFileErrorPage.php");
+            // header("Location:excelFileErrorPage.php");
             echo " File not uploaded or damaged (" . SimpleXLSX::parseError() . ")";
             echo "<hr>";
+
             return;
         }
         return $rows;
@@ -34,19 +37,21 @@ class ExcelReader {
               }
              * */
 
-            $itemCode = $row[0]["value"];
-            $itemBarcode = $row[1]["value"];
+            $altercode = $row[0]["value"];
+            $itemCode = $row[1]["value"];
             $itemDescription = $row[2]["value"];
-            $itemPosition = $row[3]["value"];
-            if (array_key_exists($itemPosition, $items)) {
-                
+            $itemPosition = $row[6]["value"];
+            if (array_key_exists($itemCode, $items)) {
+                $item = $items[$itemCode];
+                $item->addAltercode($altercode);
+                $items[$itemCode] = $item;
             } else {
                 $item = new Item();
-                $item->addCode($itemCode);
-                $item->addBarcode($itemBarcode);
+                $item->setCode($itemCode);
+                $item->addAltercode($altercode);
                 $item->setDescription($itemDescription);
                 $item->setPosition($itemPosition);
-                $items[$itemPosition] = $item;
+                $items[$itemCode] = $item;
             }
         }
         return $items;

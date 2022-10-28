@@ -26,5 +26,7 @@ echo "<br>";
 echo "<a href='salesFinder.php'>Find Item Sales</a>";
 echo "<br>";
 echo "<a href='massScan.php'>Mass Scan</a>";
+echo "<br>";
+echo "<a href='upload.php'>Upload</a>";
 echo "</h1>";
 ?>

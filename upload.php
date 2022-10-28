@@ -35,14 +35,15 @@ if (isset($_POST["submit"])) {//first checking if request commming form submit o
         $errorAlert = "FILE COULD NOT BE UPLOADED, TRY AGAIN";
 // if everything is ok, try to upload file
     } else {
-        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "uploads/app.apk")) {
+        if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], "uploads/uploadedExcelFile.xlsx")) {
             echo "The file " . htmlspecialchars(basename($_FILES["fileToUpload"]["name"])) . " has been uploaded.";
 
             //this part is for database iserton
-            //$uploadController = new UploadController();
-          //  $uploadController->saveUploadedDataIntoDatabase();
+            $uploadController = new UploadController();
+           
+            $uploadController->saveUploadedDataIntoDatabase();
             // here end insertion part
-            deployFile();
+          exit;  deployFile();
         } else {
 
             $errorAlert = "FILE COULD NOT BE UPLOADED, TRY AGAIN";
