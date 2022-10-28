@@ -5,7 +5,11 @@ require_once 'mPDO.php';
 class mPDODataBaseConnection {
 
     public function getLocalhostConnectionOnServer() {
-        $host = 'localhost';
+        if (getenv('COMPUTERNAME') == "LAPTOP") {
+            $host = 'Tommy2.heliohost.org';
+        } else {
+            $host = 'localhost';
+        }
         $db = 'sitmalidi_db';
         $user = 'sitmalidi_admin';
         $pass = 'athina2004ELENA';
@@ -29,8 +33,11 @@ class mPDODataBaseConnection {
     }
 
     public function getLocalhostConnection() {
-        // $host = 'Tommy2.heliohost.org';
-        $host = 'localhost';
+        if (getenv('COMPUTERNAME') == "LAPTOP") {
+            $host = 'Tommy2.heliohost.org';
+        } else {
+            $host = 'localhost';
+        }
         $db = 'sitmalidi_db';
         $user = 'sitmalidi_admin';
         $pass = 'athina2004ELENA';

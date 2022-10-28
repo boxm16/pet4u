@@ -18,9 +18,11 @@ class DataBaseConnection {
     }
 
     public function getConnection() {
-        // $host = 'remotemysql.com';
-
-        $host = 'localhost:3306';
+        if (getenv('COMPUTERNAME') == "LAPTOP") {
+            $host = 'Tommy2.heliohost.org';
+        } else {
+            $host = 'localhost';
+        }
         $db = $this->db;
         $user = $this->user;
         $pass = $this->pass;

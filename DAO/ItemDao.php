@@ -105,7 +105,7 @@ class ItemDao {
                 $itemId = $row["id"];
                 $description = $row["description"];
                 $position = $row["position"];
-                $altercode = $row["item_altercode"];
+                $altercode = $row["altercode"];
 
 
 
