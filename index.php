@@ -21,6 +21,8 @@ echo "<a href='afmBarcode.php' target='_blank'>AFM BARCODE</a>";
 echo "<br>";
 echo "<a href='salesByPosition.php' target='_blank'>SHOW SALES BY POSITION</a>";
 echo "<br>";
+echo "<a href='showSales.php' target='_blank'>SHOW SALES BY POSITION(Items without sales not included)</a>";
+echo "<br>";
 echo "<a href='salesFinder.php'>Find Item Sales</a>";
 echo "<br>";
 echo "<a href='massScan.php'>Mass Scan</a>";
