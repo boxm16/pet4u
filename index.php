@@ -36,8 +36,10 @@ echo "<hr>";
 echo "<br>";
 echo "<a href='https://apkfab.com/pet4u/com.example.pet4u/apk?h=97fa403d0c17cd428780c62eab2d30717e9595557af5559f857384ee765fe3bc'>DOWNLOAD ANDROID APPLICATION</a>";
 echo "<br>";
+echo "<hr>";
 echo "<a href='https://i.diawi.com/Meotdv'>DOWNLOAD MIRROR</a>";
 echo "<br>";
+echo "<hr>";
 echo "<a href='https://appsenjoy.com/rnRGD'>ANOTHER DOWNLOAD MIRROR</a>";
 
 echo "</h1>";
