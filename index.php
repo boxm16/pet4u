@@ -29,9 +29,7 @@ echo "<a href='massScan.php'>Mass Scan</a>";
 echo "<hr>";
 echo "<br>";
 echo "<a href='upload.php'>Upload</a>";
-echo "<hr>";
-echo "<br>";
-echo "<a href='uploadThenInsert.php'>Upload THEN Insert</a>";
+
 echo "<hr>";
 echo "<br>";
 echo "<a href='uploadSales.php'>Upload Sales</a>";
