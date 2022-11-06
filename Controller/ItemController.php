@@ -71,6 +71,10 @@ class ItemController {
                     $itemWithPosition->setIsComplex($itemWithSales->getIsComplex());
                     $itemsWithPositions[$id] = $itemWithPosition;
                 } else {
+                    $altercodes = $itemWithPosition->getAltercodes();
+                    $altercodeWrapper = $altercodes[0];
+                    $itemWithPosition->setCode($altercodeWrapper->getAltercode());
+                    $itemsWithPositions[$id] = $itemWithPosition;
                     //  echo "Code:$altercode dont Exist";
                     //  echo "<br>";
                 }
