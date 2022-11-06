@@ -23,8 +23,10 @@ class UploadDao {
 
             $altercodes = $item->getAltercodes();
 
-            foreach ($altercodes as $altercode) {
-                $insertRowAltercode = array($id, $altercode);
+            foreach ($altercodes as $altercodeWrapper) {
+                $altercode = $altercodeWrapper->getAltercode();
+                $altercodeType = $altercodeWrapper->getType();
+                $insertRowAltercode = array($id, $altercode, $altercodeType);
                 array_push($insertDataAltercode, $insertRowAltercode);
             }
             $id = $id + 1;
@@ -45,7 +47,7 @@ class UploadDao {
             $chunks = array_chunk($insertDataAltercode, 5000);
 
             foreach ($chunks as $chunk) {
-                $stmt = $this->connection->multiPrepare('INSERT INTO altercode (item_id, altercode)', $chunk);
+                $stmt = $this->connection->multiPrepare('INSERT INTO altercode (item_id, altercode, type)', $chunk);
                 $stmt->multiExecute($chunk);
             }
 

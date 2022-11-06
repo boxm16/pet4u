@@ -2,6 +2,7 @@
 
 require_once 'DataBaseConnection.php';
 require_once 'Model/Item.php';
+require_once 'Model/AltercodeWrapper.php';
 
 class ItemDao {
 
@@ -182,7 +183,7 @@ class ItemDao {
             $item->setCoeficient($itemData["coeficient"]);
             $item->setTotalSalesInPieces($itemData["total_sales_in_pieces"]);
             $item->setIsComplex($itemData["is_complex"]);
-           
+
             $items[$itemData["code"]] = $item;
         }
 
@@ -251,25 +252,37 @@ class ItemDao {
             $position = $itemData["position"];
 
             $altercode = $itemData["altercode"];
+            $altercodeType = $itemData["type"];
 
             if (!array_key_exists($itemId, $items)) {
                 $item = new Item();
                 $item->setId($itemId);
                 $item->setDescription($description);
                 $item->setPosition($position);
-                $item->addAltercode($altercode);
+
+                $altercodeWrapper = new AltercodeWrapper();
+                $altercodeWrapper->setAltercode($altercode);
+                $altercodeWrapper->setType($altercodeType);
+
+                $item->addAltercode($altercodeWrapper);
+
 
                 $items[$itemId] = $item;
             } else {
                 $item = $items[$itemId];
-                $item->addAltercode($altercode);
+
+                $altercodeWrapper = new AltercodeWrapper();
+                $altercodeWrapper->setAltercode($altercode);
+                $altercodeWrapper->setType($altercodeType);
+
+                $item->addAltercode($altercodeWrapper);
+
+
                 $items[$itemId] = $item;
             }
         }
 
         return $items;
     }
-
-    
 
 }

@@ -53,7 +53,8 @@ class ItemController {
         foreach ($itemsWithPositions as $itemWithPosition) {
             $id = $itemWithPosition->getId();
             $altercodes = $itemWithPosition->getAltercodes();
-            foreach ($altercodes as $altercode) {
+            foreach ($altercodes as $altercodeWrapper) {
+                $altercode = $altercodeWrapper->getAltercode();
                 if (array_key_exists($altercode, $itemsWithSales)) {
 
                     $itemWithSales = $itemsWithSales[$altercode];

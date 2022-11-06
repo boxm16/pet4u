@@ -50,7 +50,12 @@ class ExcelReader {
         $items = array();
         $doubledCodeItems = array();
         $checkArray = array();
+        $rowIndex = 0;
         foreach ($excelRows as $row) {
+            if ($rowIndex == 0) {
+                $rowIndex++;
+                continue;
+            }
             // sifting off empty rows and rows that show something else
             /*   if ($row[7]["value"] == "მარშრუტი" || $row[7]["value"] == "კონდუქტორი" || $row[7]["value"] == "") {
 
@@ -62,14 +67,25 @@ class ExcelReader {
             $itemCode = $row[1]["value"];
             $itemDescription = $row[2]["value"];
             $itemPosition = $row[6]["value"];
+            $altercodeType = $row[9]["value"];
             if (array_key_exists($itemCode, $items)) {
                 $item = $items[$itemCode];
-                $item->addAltercode($altercode);
+
+                $altercodeWrapper = new AltercodeWrapper();
+                $altercodeWrapper->setAltercode($altercode);
+                $altercodeWrapper->setType($altercodeType);
+                $item->addAltercode($altercodeWrapper);
+
                 $items[$itemCode] = $item;
             } else {
                 $item = new Item();
                 $item->setCode($itemCode);
-                $item->addAltercode($altercode);
+
+                $altercodeWrapper = new AltercodeWrapper();
+                $altercodeWrapper->setAltercode($altercode);
+                $altercodeWrapper->setType($altercodeType);
+
+                $item->addAltercode($altercodeWrapper);
                 $item->setDescription($itemDescription);
                 $item->setPosition($itemPosition);
                 $items[$itemCode] = $item;
@@ -94,7 +110,7 @@ class ExcelReader {
               continue;
               }
              * */
-          //    echo $row[1]["value"] . "<br>";
+            //    echo $row[1]["value"] . "<br>";
             $position = $row[0]["value"];
             $itemCode = $row[1]["value"];
             $description = $row[2]["value"];

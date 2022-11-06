@@ -22,7 +22,7 @@ class Item {
     }
 
     public function addAltercode($altercode) {
-        array_push( $this->altercodes, $altercode);
+        array_push($this->altercodes, $altercode);
     }
 
     function getId() {
@@ -120,8 +120,6 @@ class Item {
     function setMeasureUnit($measureUnit): void {
         $this->measureUnit = $measureUnit;
     }
-    
-  
 
     function getIsComplex() {
         return $this->isComplex;
@@ -130,7 +128,5 @@ class Item {
     function setIsComplex($isComplex): void {
         $this->isComplex = $isComplex;
     }
-
-
 
 }
