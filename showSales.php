@@ -75,7 +75,7 @@ $allItems = $itemController->getSalesByPositions();
                 echo "<td>";
                 foreach ($altercodes as $altercodeWrapper) {
 
-                    if (str_contains($altercodeWrapper->getType(), 'eshop')) {
+                    if (strpos($altercodeWrapper->getType(), 'eshop')) {
                         $eShopCode = $altercodeWrapper->getAltercode();
                         $eShopStatus = $altercodeWrapper->getType();
                         echo "<a href='https://www.pet4u.gr/search-products-el.html?subcats=Y&status=A&match=all&pshort=N&pfull=N&pname=Y&pkeywords=N&pcode_from_q=Y&wg_go_direct=Y&search_performed=Y&q=$eShopCode' target='_blank'>" . $eShopCode . "-" . $eShopStatus . "</a>";
