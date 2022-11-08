@@ -111,19 +111,19 @@ class ExcelReader {
               }
              * */
             //    echo $row[1]["value"] . "<br>";
-            $position = $row[0]["value"];
-            $itemCode = $row[1]["value"];
-            $description = $row[2]["value"];
+            
+            $itemCode = $row[0]["value"];
+            $description = $row[1]["value"];
 
-            $measureUnit = $row[3]["value"];
-            $eshopSales = $row[4]["value"];
-            $shopsSupply = $row[5]["value"];
-            $totalSales = $row[6]["value"];
-            $coeficient = $row[7]["value"];
-            $totalSalesInPieces = $row[8]["value"];
+            $measureUnit = $row[2]["value"];
+            $eshopSales = $row[3]["value"];
+            $shopsSupply = $row[4]["value"];
+            $totalSales = $row[5]["value"];
+            $coeficient = $row[6]["value"];
+            $totalSalesInPieces = $row[7]["value"];
 
             $item = new Item();
-            $item->setPosition($position);
+         
             $item->setCode($itemCode);
             $item->setDescription($description);
 
