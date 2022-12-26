@@ -1,7 +1,7 @@
 <?php
 
 require_once 'Controller/TechManController.php';
-
+echo "<center>";
 echo "<h1>";
 
 echo "<br>";
@@ -28,6 +28,7 @@ echo "<br>";
 echo "<br>";
 echo "<br>";
 echo "<hr>";
+echo "</center>";
 
 exit;
 //echo "<a href='addNewItem.php'>Add New Item</a>";
