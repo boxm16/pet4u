@@ -20,10 +20,7 @@ echo "<img src='images/qr_1.png' style='width:200px;height:200px;' >";
 echo "<br>";
 echo "<br>";
 echo "<hr>";
-echo "<a href='https://apkfab.com/pet4u/com.example.pet4u/apk?h=97fa403d0c17cd428780c62eab2d30717e9595557af5559f857384ee765fe3bc'>OLD VERSION DOWNLOAD</a>";
-echo "<br>";
-echo "<br>";
-echo "<img src='images/qr_2.png' style='width:200px;height:200px;' >";
+
 echo "<br>";
 echo "<br>";
 echo "<br>";
