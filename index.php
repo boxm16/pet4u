@@ -9,7 +9,7 @@ echo "<a href='afmBarcode.php' target='_blank'>AFM BARCODE</a>";
 
 
  echo "<hr>";
-echo "<a href='myStock.php' target='_blank'>My Sock</a>";
+echo "<a href='myStock.php' target='_blank'>My Stock</a>";
             
 echo "<br>";
 echo "<br>";
