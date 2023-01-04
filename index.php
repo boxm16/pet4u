@@ -6,6 +6,11 @@ echo "<h1>";
 
 echo "<br>";
 echo "<a href='afmBarcode.php' target='_blank'>AFM BARCODE</a>";
+
+
+ echo "<hr>";
+echo "<a href='myStock.php' target='_blank'>My Sock</a>";
+            
 echo "<br>";
 echo "<br>";
 echo "<a href='http://ec2-54-74-154-166.eu-west-1.compute.amazonaws.com:8080/Pet4U/index.htm' target='_blank'>GO NEW SERVER</a>";
