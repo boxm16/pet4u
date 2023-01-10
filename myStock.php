@@ -222,20 +222,7 @@ and open the template in the editor.
                     </table>
                 </td>
 
-                <td>
-                    <table>
-                        <tr>
-                            <td>
-                                06.25.0450
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="myStockImages/06.25.0450.jpg" style="width:200px;height:200px;" >
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+                
 
                 <td>
                     <table>
@@ -344,20 +331,7 @@ and open the template in the editor.
                         </tr>
                     </table>
                 </td>
-                <td>
-                    <table>
-                        <tr>
-                            <td>
-                                1369120
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <img src="myStockImages/1369120.jpg" style="width:200px;height:200px;" >
-                            </td>
-                        </tr>
-                    </table>
-                </td>
+               
 
                 <td>
                     <table>
